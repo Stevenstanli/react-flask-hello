@@ -182,6 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.error("Error:", error);
 					});
+			},
 
 			//Sección de funciones para página de reportes
 			// Filtra productos por proveedor para reporte
