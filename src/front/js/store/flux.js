@@ -18,40 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			providers: null,
 			datosUpdate: null,
 			category: null,
-			products: [
-				{
-					id_Product: "1",
-					name_Product: "Vino tinto",
-					id_Category: "Bebida",
-					id_Provider: "1A",
-					provider: "Mucho vino tinto",
-					cantidad: "3"
-				},
-				{
-					id_Product: "2",
-					name_Product: "Vino blanco",
-					id_Category: "Bebida",
-					id_Provider: "1A",
-					provider: "Mucho vino tinto",
-					cantidad: "9"
-				},
-				{
-					id_Product: "3",
-					name_Product: "Vino tinto suave",
-					id_Category: "Bebida",
-					id_Provider: "1B",
-					provider: "Distribuidora de vinos",
-					cantidad: "20"
-				},
-				{
-					id_Product: "4",
-					name_Product: "Vino tinto amargo",
-					id_Category: "Bebida",
-					id_Provider: "1B",
-					provider: "Distribuidora de vinos",
-					cantidad: "14"
-				}
-			]
+			products: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -80,7 +47,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 				//reset the global store
 				setStore({ demo: demo });
 			},
-
 			//-----------------------------------Provider------------------------------------------------------------------------
 			loadProviders: () => {
 				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
@@ -178,6 +144,37 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log("Success:", data);
 						setStore({ providers: data });
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			// ---------------------------------Products-----------------------------------------------------------------------------
+			loadProducts: () => {
+				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/products")
+					.then(response => response.json())
+					.then(response => setStore({ products: response }));
+			},
+			insertProducts: data => {
+				console.log(data);
+				fetch(
+					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/products",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ products: getStore().products, data });
+					})
+					.then(() => {
+						getActions().loadProducts();
 					})
 					.catch(error => {
 						console.error("Error:", error);
