@@ -91,12 +91,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ datosUpdate: data });
 			},
 			loadCategory: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
 					.then(response => setStore({ category: response }));
 			},
 			insertCategory: data => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category", {
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
