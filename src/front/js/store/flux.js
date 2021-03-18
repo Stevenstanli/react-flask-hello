@@ -49,7 +49,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			//-----------------------------------Provider------------------------------------------------------------------------
 			loadProviders: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider")
 					.then(response => response.json())
 					.then(response => setStore({ providers: response }));
 			},
@@ -57,12 +57,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ datosUpdate: data });
 			},
 			loadCategory: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category")
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
 					.then(response => setStore({ category: response }));
 			},
 			insertCategory: data => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category", {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -81,7 +81,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertData: data => {
 				console.log(data);
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider",
 
 					{
 						method: "POST",
@@ -108,7 +108,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertUserdata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
 
 					{
 						method: "POST",
@@ -130,7 +130,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertLogindata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/login",
 
 					{
 						method: "POST",
@@ -151,14 +151,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// ---------------------------------Products-----------------------------------------------------------------------------
 			loadProducts: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/products")
+				fetch("https:/3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/products")
 					.then(response => response.json())
 					.then(response => setStore({ products: response }));
 			},
 			insertProducts: data => {
 				console.log(data);
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/products",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/ api/products",
 
 					{
 						method: "POST",

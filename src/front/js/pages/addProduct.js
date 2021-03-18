@@ -1,6 +1,6 @@
 import React, { Component, useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
-import { Jumbotron, Button, Card, Image, Col, Row, Form, Link } from "react-bootstrap";
+import { Jumbotron, Button, Card, Image, Col, Row, Form, Link, Dropdown } from "react-bootstrap";
 import "../../styles/addProduct.scss";
 
 export const AddProduct = () => {
@@ -75,11 +75,23 @@ export const AddProduct = () => {
 					<Form.Control type="text" placeholder="Nombre" onChange={e => setName_Product(e.target.value)} />
 				</Form.Group>
 				<Form.Group as={Col}>
-					<Form.Control
-						type="text"
-						placeholder="Marca"
-						onChange={e => setTrade_Product_Details(e.target.value)}
-					/>
+					<Dropdown>
+						<Dropdown.Toggle variant="" id="dropdown-basic" className="dropdown-category">
+							Categoría
+						</Dropdown.Toggle>
+
+						<Dropdown.Menu>
+							<Dropdown.Item className="dropdown-category" href="#/action-1">
+								Action
+							</Dropdown.Item>
+							<Dropdown.Item className="dropdown-category" href="#/action-2">
+								Another action
+							</Dropdown.Item>
+							<Dropdown.Item className="dropdown-category" href="#/action-3">
+								Something else
+							</Dropdown.Item>
+						</Dropdown.Menu>
+					</Dropdown>
 				</Form.Group>
 			</Form.Row>
 			<Form.Row>
