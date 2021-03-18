@@ -81,15 +81,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 				setStore({ demo: demo });
 			},
 
-			//-----------------------------------Provider------------------------------------------------------------------------
-			loadProviders: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
-					.then(response => response.json())
-					.then(response => setStore({ providers: response }));
-			},
-			updateProvider: data => {
-				setStore({ datosUpdate: data });
-			},
+			//-----------------------------------Category------------------------------------------------------------------------
+
 			loadCategory: () => {
 				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
@@ -112,8 +105,9 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("Error:", error);
 					});
 			},
+
+			//-----------------------------------Provider------------------------------------------------------------------------
 			insertData: data => {
-				console.log(data);
 				fetch(
 					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider",
 
@@ -129,6 +123,60 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(data => {
 						console.log("Success:", data);
 						setStore({ providers: getStore().providers, data });
+					})
+					.then(() => {
+						getActions().loadProviders();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			loadProviders: () => {
+				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
+					.then(response => response.json())
+					.then(response => setStore({ providers: response }));
+			},
+
+			updateProvider: data => {
+				fetch(
+					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProviders();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateProvider: data => {
+				console.log(data);
+				fetch(
+					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerEliminate/" + data.id_Provider,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
 					})
 					.then(() => {
 						getActions().loadProviders();
@@ -182,6 +230,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.catch(error => {
 						console.error("Error:", error);
 					});
+			},
 
 			//Sección de funciones para página de reportes
 			// Filtra productos por proveedor para reporte

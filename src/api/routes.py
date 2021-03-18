@@ -44,23 +44,57 @@ def addProvider():
     db.session.commit()
     return jsonify("All good"), 200
 
-@api.route('/update_favorite/<int:fid>', methods=['PUT'])
-def update_fav(fid):
+@api.route('/providerUpdate/<string:id_Provider>', methods=['PUT'])
+def update_prov(id_Provider):
 
     # recibir info del request
     
-    fav = Favorites.query.get(fid)
-    if fav is None:
-        raise APIException('Favorite not found', status_code=404)
+    prov = Provider.query.get(id_Provider)
+    proper = Provider_Details.query.get(id_Provider)
+    
+    print("Hola")
+    if prov  is None:
+        raise APIException('Provider not found', status_code=404)
+    if proper  is None:
+        raise APIException('Provider_Details not found', status_code=404)
 
     request_body = request.get_json()
 
-    if "name" in request_body:
-        fav.name = request_body["name"]
+    if "name_Provider" in request_body:
+        prov.name_Provider = request_body["name_Provider"]
+    if  "email_Provider_Details" in request_body:
+        proper.email_Provider_Details = request_body ["email_Provider_Details"]
+    if  "phone_Provider_Details" in request_body:
+        proper.phone_Provider_Details = request_body ["phone_Provider_Details"]
+    if  "address_Provider_Details" in request_body:
+        proper.address_Provider_Details = request_body ["address_Provider_Details"]
+    if  "payment_Type_Provider_Details" in request_body:
+        proper.payment_Type_Provider_Details = request_body ["payment_Type_Provider_Details"]
+     
+    
 
     db.session.commit()
 
     return jsonify("All good"), 200
+
+@api.route('/providerEliminate/<string:id_Provider>', methods=['PUT'])
+def update_Eliminate(id_Provider):
+
+    
+    prov = Provider.query.get(id_Provider)
+    
+    if prov  is None:
+        raise APIException('Provider not found', status_code=404)
+
+    request_body = request.get_json()
+
+    if "active_Provider" in request_body:
+        prov.active_Provider = "Inactivo"
+
+    db.session.commit()
+
+    return jsonify("All good"), 200
+
 
 
 #------------------------------------------------------User----------------------------------------------------------------------------

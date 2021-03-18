@@ -17,13 +17,43 @@ export const FormProvider = () => {
 	const [address_Provider_Details, setAddress_Provider_Details] = useState("");
 
 	const update = data => {
-		console.log(data);
 		setId_Provider(data.id_Provider);
 		setName_Provider(data.name_Provider);
 		setEmail_Provider_Details(data.properties[0].email_Provider_Details);
 		setPayment_Type_Provider_Details(data.properties[0].payment_Type_Provider_Details);
 		setPhone_Provider_Details(data.properties[0].phone_Provider_Details);
 		setAddress_Provider_Details(data.properties[0].address_Provider_Details);
+	};
+
+	const handleUpdate = () => {
+		if (
+			id_Provider === "" ||
+			name_Provider === "" ||
+			email_Provider_Details === "" ||
+			phone_Provider_Details === "" ||
+			payment_Type_Provider_Details === "" ||
+			address_Provider_Details === ""
+		) {
+			alert("Existen campos vacios");
+		} else {
+			const data = {
+				id_Provider: id_Provider,
+				name_Provider: name_Provider,
+				email_Provider_Details: email_Provider_Details,
+				phone_Provider_Details: phone_Provider_Details,
+				payment_Type_Provider_Details: payment_Type_Provider_Details,
+				address_Provider_Details: address_Provider_Details,
+				active_Provider: "activo"
+			};
+			actions.updateProvider(data);
+
+			setId_Provider("");
+			setName_Provider("");
+			setEmail_Provider_Details("");
+			setPayment_Type_Provider_Details("");
+			setPhone_Provider_Details("");
+			setAddress_Provider_Details("");
+		}
 	};
 
 	const handleSubmit = e => {
@@ -45,7 +75,7 @@ export const FormProvider = () => {
 				phone_Provider_Details: phone_Provider_Details,
 				payment_Type_Provider_Details: payment_Type_Provider_Details,
 				address_Provider_Details: address_Provider_Details,
-				active_Provider: "activo"
+				active_Provider: "Activo"
 			};
 			actions.insertData(data);
 		}
@@ -146,7 +176,7 @@ export const FormProvider = () => {
 									variant="primary"
 									type="button"
 									onClick={() => {
-										actions.addFavorite(item);
+										handleUpdate();
 									}}>
 									Update
 								</Button>
@@ -171,27 +201,34 @@ export const FormProvider = () => {
 						</thead>
 						<tbody>
 							{store.providers.map((item, i) => {
-								return (
-									<tr key={i}>
-										<td>{i + 1}</td>
-										<td>{store.providers[i].id_Provider}</td>
-										<td>{store.providers[i].name_Provider}</td>
-										<td>{item.properties[0].email_Provider_Details}</td>
-										<td>{item.properties[0].payment_Type_Provider_Details}</td>
-										<td>{item.properties[0].phone_Provider_Details}</td>
-										<td>
-											<i
-												className="fas fa-pen"
-												onClick={() => {
-													update(item);
-												}}
-											/>
-										</td>
-										<td>
-											<i className="fas fa-trash-alt" />
-										</td>
-									</tr>
-								);
+								if (item.active_Provider == "Activo") {
+									return (
+										<tr key={i}>
+											<td>{i + 1}</td>
+											<td>{store.providers[i].id_Provider}</td>
+											<td>{store.providers[i].name_Provider}</td>
+											<td>{item.properties[0].email_Provider_Details}</td>
+											<td>{item.properties[0].payment_Type_Provider_Details}</td>
+											<td>{item.properties[0].phone_Provider_Details}</td>
+											<td>
+												<i
+													className="fas fa-pen"
+													onClick={() => {
+														update(item);
+													}}
+												/>
+											</td>
+											<td>
+												<i
+													className="fas fa-trash-alt"
+													onClick={() => {
+														actions.eliminateProvider(item);
+													}}
+												/>
+											</td>
+										</tr>
+									);
+								}
 							})}
 						</tbody>
 					</Table>
