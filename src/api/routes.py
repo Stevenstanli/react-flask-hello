@@ -97,14 +97,14 @@ def update_Eliminate(id_Provider):
 
 
 
-#------------------------------------------------------User----------------------------------------------------------------------------
+#------------------------------------------------------Category----------------------------------------------------------------------------
 
 
 @api.route('/category',methods=['GET'])
 def listCategory():
-    category = Provider.query.all()
-    provider_serialized = list(map(lambda data: data.serialize(), category))
-    return jsonify(provider_serialized),200
+    category = Category.query.all()
+    category_serialized = list(map(lambda data: data.serialize(), category))
+    return jsonify(category_serialized),200
 
 @api.route('/category',methods=['POST'])
 def addCategory():
