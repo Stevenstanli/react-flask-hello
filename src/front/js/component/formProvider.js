@@ -222,7 +222,7 @@ export const FormProvider = () => {
 												<i
 													className="fas fa-trash-alt"
 													onClick={() => {
-														actions.eliminateProvider(item);
+														actions.eliminateCategory(item);
 													}}
 												/>
 											</td>

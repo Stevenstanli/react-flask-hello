@@ -84,8 +84,8 @@ class Provider_Details(db.Model):
 class Category(db.Model):
     id_Category = db.Column(db.Integer, primary_key=True)
     name_Category = db.Column(db.String(120), nullable=False)
-    description_Category = db.Column(db.Integer, nullable=False)
-    active_Product = db.Column(db.String(3), nullable=False)
+    description_Category = db.Column(db.String(250), nullable=False)
+    active_Product = db.Column(db.Boolean, nullable=False)
     properties = db.relationship('Product', backref='category', lazy=True)
    
     def __repr__(self):
