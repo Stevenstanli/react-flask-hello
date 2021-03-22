@@ -84,12 +84,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//-----------------------------------Category------------------------------------------------------------------------
 
 			loadCategory: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
 					.then(response => setStore({ category: response }));
 			},
 			insertCategory: data => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category", {
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -99,17 +99,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log("Success:", data);
-						setStore({ category: data });
+						setStore({ category: getStore().category, data });
+					})
+					.then(() => {
+						getActions().loadCategory();
 					})
 					.catch(error => {
 						console.error("Error:", error);
 					});
 			},
 
+			updateCategory: data => {
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateCategory: data => {
+				console.log(data);
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryEliminate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
 			//-----------------------------------Provider------------------------------------------------------------------------
 			insertData: data => {
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/provider",
 
 					{
 						method: "POST",
@@ -132,14 +183,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			loadProviders: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/provider")
 					.then(response => response.json())
 					.then(response => setStore({ providers: response }));
 			},
 
 			updateProvider: data => {
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
 
 					{
 						method: "PUT",
@@ -164,7 +215,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateProvider: data => {
 				console.log(data);
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerEliminate/" + data.id_Provider,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/providerEliminate/" + data.id_Provider,
 
 					{
 						method: "PUT",
@@ -190,7 +241,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertUserdata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/user",
 
 					{
 						method: "POST",
@@ -212,7 +263,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertLogindata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/login",
 
 					{
 						method: "POST",
