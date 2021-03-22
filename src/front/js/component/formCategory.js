@@ -18,16 +18,15 @@ export const FormCategory = () => {
 		setName_Category(data.name_Category);
 		setDescription_Category(data.description_Category);
 	};
+
 	const handleUpdate = () => {
-		e.preventDefault();
-		if (id_Category === "" || name_Category === "" || description_Category === "") {
+		if (name_Category === "" || description_Category === "") {
 			alert("Existen campos vacios");
 		} else {
 			const data = {
 				id_Category: id_Category,
 				name_Category: name_Category,
-				description_Category: description_Category,
-				active_Product: true
+				description_Category: description_Category
 			};
 			actions.updateCategory(data);
 
@@ -39,16 +38,19 @@ export const FormCategory = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		if (id_Category === "" || name_Category === "" || description_Category === "") {
+		if (name_Category === "" || description_Category === "") {
 			alert("Existen campos vacios");
 		} else {
 			const data = {
-				id_Category: id_Category,
 				name_Category: name_Category,
 				description_Category: description_Category,
 				active_Product: true
 			};
 			actions.insertCategory(data);
+
+			setId_Category("");
+			setName_Category("");
+			setDescription_Category("");
 		}
 	};
 	const { store, actions } = useContext(Context);
@@ -62,14 +64,8 @@ export const FormCategory = () => {
 				<Card body>
 					<Row>
 						<Col sm="12" md="6">
-							<Form>
+							<Form onSubmit={e => handleSubmit(e)}>
 								<Form.Row>
-									<Form.Group as={Col}>
-										<Form.Control
-											value={id_Category}
-											onChange={e => setId_Category(e.target.value)}
-										/>
-									</Form.Group>
 									<Form.Group as={Col}>
 										<Form.Label>Nombre:</Form.Label>
 										<Form.Control
@@ -114,8 +110,6 @@ export const FormCategory = () => {
 					<Table striped bordered hover>
 						<thead>
 							<tr>
-								<th>#</th>
-								<th>Id Categoria</th>
 								<th>Nombre</th>
 								<th>Descripción</th>
 								<th>Modificar</th>
@@ -126,8 +120,7 @@ export const FormCategory = () => {
 							{store.category.map((item, i) => {
 								return (
 									<tr key={i}>
-										<td>{i + 1}</td>
-										<td>{store.category[i].id_Category}</td>
+										<td hidden>{store.category[i].id_Category}</td>
 										<td>{store.category[i].name_Category}</td>
 										<td>{store.category[i].description_Category}</td>
 										<td>
