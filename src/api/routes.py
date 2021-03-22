@@ -5,6 +5,12 @@ from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, User_Details, Provider, Provider_Details, Category, Product , Product_Details, Inventory, Movement_Inventory
 from api.utils import generate_sitemap, APIException
 
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import datetime
+
+#from models import Person
+
 api = Blueprint('api', __name__)
 
 
@@ -85,27 +91,49 @@ def add_user():
                             cargo_User_Details=request_body["cargo_User_Details"],
                             phone_User_Details=request_body["phone_User_Details"],
                             address_Details=request_body["address_Details"])
-    print(request_body)
+    
+    hashed_password = generate_password_hash(properties.password_User_Details)
+    properties.password_User_Details = hashed_password
+
     db.session.add(user)
     db.session.add(properties)
     db.session.commit()
-    return jsonify("All good"), 200  
+    return jsonify("All good"), 200 
+
 
 @api.route('/login',methods=['POST'])
 def login():
-    request_body = request.get_json()
-
-    user = User(
-                name_User = request_body["name_User"], 
-                active_User = request_body["active_User"])
-    properties = User_Details(
-                              password_User_Details = request_body["password_User_Details"])
     
-    return jsonify("All good"), 200   
+    userlogin = request.json.get("name_User", None)
+    passwordlogin = request.json.get("password_User_Details",None)
+    
 
+    if not userlogin:
+        return jsonify({"msg":"Username is required"}),400
+    if not passwordlogin:
+        return jsonify({"msg":"password is required"}),400
 
+    user = User_Details.query.filter(User.name_User == userlogin).first()
+    #passwordselect = User_Details.filter_by().first()
 
+    if not user:
+        return jsonify({"msg":"Username / Password are incorrect"}),401
 
+    #id_user = User.query.filter_by(name_User = user).first()
+
+    if not check_password_hash(user.password_User_Details, passwordlogin):
+            return jsonify({"Mensaje": "La constraseña es incorrecta"}), 401 
+    
+    
+    expiracion = datetime.timedelta(days=3)
+    access_token = create_access_token(identity=user.user.name_User, expires_delta=expiracion)
+    data = {
+            "user": user.serialize(),
+            "token": access_token
+        }                                
+    
+    return jsonify(data), 200 
+    
 #----------------------------------------Product------------------------------------------------------------------------------------------
 @api.route('/product',methods=['GET'])
 def get_product():
@@ -145,6 +173,45 @@ def get_inventory():
     inventory_serialized = list(map(lambda data: data.serialize(), inventory))
     return jsonify(inventory_serialized),200
 
+@api.route('/inventory',methods=['POST'])
+def add_inventory():
+    request_body = request.get_json()
+
+    inventory = Inventory(id_Inventory=request_body["id_Inventory"],
+                          id_Product=request_body["id_Product"],
+                          quantity_Product_Inventory=request_body["quantity_Product_Inventory"],
+                          max_Product_Inventory=request_body["max_Product_Inventory"], 
+                          min_Product_Inventory=request_body["min_Product_Inventory"],
+                          total_Cost_Inventory=request_body["total_Cost_Inventory"])
+    print(request_body)
+    db.session.add(inventory)
+    db.session.commit()
     return jsonify("All good"), 200
 
-#----------------------------------------------------------------------------------------------------------------------------------
+
+#--------------------------Movement_Inventory----------------------------------------------------------------------------------------------------
+
+@api.route('/Movement_Inventory',methods=['GET'])
+def get_Movement_Inventory():
+    movement_inventory = Movement_Inventory.query.all()
+    movement_inventory_serialized = list(map(lambda data: data.serialize(), movement_inventory))
+    return jsonify(movement_inventory_serialized),200
+
+
+@api.route('/Movement_Inventory',methods=['POST'])
+def add_Movement_Inventory():
+    request_body = request.get_json()
+
+    movement_inventory = Movement_Inventory(id_Movement=request_body["id_Movement"],
+                                            id_Product=request_body["id_Product"],
+                                            id_Document_User=request_body["id_Document_User"],
+                                            id_Orden=request_body["id_Orden"], 
+                                            quantity_Product_Movement=request_body["quantity_Product_Movement"],
+                                            type_Movement=request_body["type_Movement"],
+                                            date_Movement=request_body["date_Movement"])
+    print(request_body)
+    db.session.add(movement_inventory)
+    db.session.commit()
+    return jsonify("All good"), 200
+    
+#------------------------------------------------------------------------------------------------------------------------------
