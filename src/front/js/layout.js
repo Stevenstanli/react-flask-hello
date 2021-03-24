@@ -14,7 +14,6 @@ import { AddProduct } from "./pages/addProduct";
 import { Reports } from "./pages/reports";
 import injectContext from "./store/appContext";
 import { Category } from "./pages/category";
-
 import { Navbar } from "./component/navbar";
 import { Footer } from "./component/footer";
 

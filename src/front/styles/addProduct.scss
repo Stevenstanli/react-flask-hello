@@ -1,24 +1,32 @@
-.add-product-form { 
+.general-row{ 
+    display: flex;
+    justify-content: space-around;
+}
+.add-product-form { border:solid 10px lightgray;
     display: flex;
     flex-direction: column;
-    min-width: 500px;
     background-color: lightgray;
     border-radius: 10px;
     align-items: center;
-    align-self: center;
 }
 .add-product-symbol{ 
     display: flex;
     width: fit-content;
-    margin-top: 20px;
+    margin-top: 10px;
     font-size: 500% !important;
 }
-.guardar-button{
-    margin-bottom: 20px;
-}
-.dropdown-category{ 
+
+.dropdown-provider{ 
     background-color: white;
     display: flex;
-    width: 235px;
-    justify-content: space-between;
 }
+.dropdown-tax{ 
+    background-color: white;
+    display: flex;
+    margin-right: -15px;
+}
+.set-name{
+    display: flex;
+    min-width: 480px;
+}
+
