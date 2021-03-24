@@ -16,7 +16,7 @@ export function Login() {
 			const data = {
 				name_User: name_User,
 				password_User_Details: password_User_Details,
-				active_User: true
+				active_User: "Activo"
 			};
 			actions.insertLogindata(data);
 		}
