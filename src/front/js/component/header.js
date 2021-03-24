@@ -11,7 +11,7 @@ export const Header = () => {
 		<Jumbotron fluid>
 			<Container className="header-jumbo">
 				<div className="shawdow-ban">
-					<span></span>
+					<span />
 					<h1 className="">Se venden costuras a domicilio</h1>
 					<p>
 						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
