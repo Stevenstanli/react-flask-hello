@@ -66,13 +66,64 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log("Success:", data);
-						setStore({ category: data });
+						setStore({ category: getStore().category, data });
+					})
+					.then(() => {
+						getActions().loadCategory();
 					})
 					.catch(error => {
 						console.error("Error:", error);
 					});
 			},
 
+			updateCategory: data => {
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateCategory: data => {
+				console.log(data);
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryEliminate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
 			//-----------------------------------Provider------------------------------------------------------------------------
 			insertData: data => {
 				fetch(
