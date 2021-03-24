@@ -14,7 +14,10 @@ import { AddProduct } from "./pages/addProduct";
 import { Reports } from "./pages/reports";
 import injectContext from "./store/appContext";
 import { Category } from "./pages/category";
-import { Navbar } from "./component/navbar";
+
+
+import { Navigation } from "./component/navigation";
+
 import { Footer } from "./component/footer";
 
 //create your first component
@@ -27,7 +30,7 @@ const Layout = () => {
 		<div className="d-flex flex-column h-100">
 			<BrowserRouter basename={basename}>
 				<ScrollToTop>
-					<Navbar />
+					<Navigation />
 					<Switch>
 						<Route exact path="/">
 							<Home />

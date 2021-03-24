@@ -89,7 +89,7 @@ export const FormProvider = () => {
 	return (
 		!!store.providers && (
 			<div>
-				<Card body>
+				<Card body className="infoProvider">
 					<Row>
 						<Col sm="12" md="6" className="image">
 							<Image src="https://via.placeholder.com/350x350" rounded />

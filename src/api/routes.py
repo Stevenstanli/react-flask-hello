@@ -71,8 +71,6 @@ def update_prov(id_Provider):
     if  "payment_Type_Provider_Details" in request_body:
         proper.payment_Type_Provider_Details = request_body ["payment_Type_Provider_Details"]
      
-    
-
     db.session.commit()
 
     return jsonify("All good"), 200
