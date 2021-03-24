@@ -188,7 +188,14 @@ def add_user():
 
 @api.route('/login',methods=['POST'])
 def login():
+
+    #login
+    userlogin = request.json.get("name_User", None)
+    passwordlogin = request.json.get("password_User_Details",None)
+    
+
     request_body = request.get_json()
+
 
     user = User(
                 name_User = request_body["name_User"], 
