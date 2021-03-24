@@ -22,7 +22,7 @@ export const Home = () => {
 	return (
 		<Fragment>
 			<Row>
-				<Header></Header>
+				<Header />
 			</Row>
 
 			<Row className="apps title">
@@ -31,11 +31,11 @@ export const Home = () => {
 				</Col>
 			</Row>
 			<Row className="apps">
-				<AppList></AppList>
+				<AppList />
 			</Row>
 
 			<Row className="history">
-				<Histories></Histories>
+				<Histories />
 			</Row>
 
 			<Row className="cards">
@@ -43,8 +43,8 @@ export const Home = () => {
 					<h1 className="header-content">Desarrolladores</h1>
 				</Col>
 			</Row>
-			<Team></Team>
-			<Contact></Contact>
+			<Team />
+			<Contact />
 		</Fragment>
 	);
 };

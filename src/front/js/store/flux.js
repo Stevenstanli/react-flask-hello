@@ -51,12 +51,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//-----------------------------------Category------------------------------------------------------------------------
 
 			loadCategory: () => {
-				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
 					.then(response => setStore({ category: response }));
 			},
 			insertCategory: data => {
-				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category", {
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/category", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -127,7 +127,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//-----------------------------------Provider------------------------------------------------------------------------
 			insertData: data => {
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/provider",
 
 					{
 						method: "POST",
@@ -150,14 +150,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			loadProviders: () => {
-				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/provider")
 					.then(response => response.json())
 					.then(response => setStore({ providers: response }));
 			},
 
 			updateProvider: data => {
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
 
 					{
 						method: "PUT",
@@ -182,8 +182,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateProvider: data => {
 				console.log(data);
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerEliminate/" +
-						data.id_Provider,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/providerEliminate/" + data.id_Provider,
 
 					{
 						method: "PUT",
@@ -208,8 +207,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//--------------------------------------------Users---------------------------------------------------------------
 			insertUserdata: data => {
 				console.log(data);
-				/*fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/user",
 
 					{
 						method: "POST",
@@ -226,12 +225,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.error("Error:", error);
-					});*/
+					});
 			},
 			insertLogindata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/login",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/login",
 
 					{
 						method: "POST",
@@ -252,14 +251,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			// ---------------------------------Products-----------------------------------------------------------------------------
 			loadProducts: () => {
-				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product")
+				fetch("https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/product")
 					.then(response => response.json())
 					.then(response => setStore({ products: response }));
 			},
 			insertProducts: data => {
 				console.log(data);
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product",
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/product",
 
 					{
 						method: "POST",
@@ -283,7 +282,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 			updateProduct: data => {
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productUpdate/" + data.id_Product,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/productUpdate/" + data.id_Product,
 
 					{
 						method: "PUT",
@@ -308,7 +307,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateProduct: data => {
 				console.log(data);
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productEliminate/" + data.id_Product,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/productEliminate/" + data.id_Product,
 
 					{
 						method: "PUT",

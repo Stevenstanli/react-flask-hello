@@ -34,7 +34,7 @@ export function Register() {
 				cargo_User_Details: cargo_User_Details,
 				phone_User_Details: phone_User_Details,
 				address_Details: address_Details,
-				active_User: "Activo"
+				active_User: true
 			};
 			actions.insertUserdata(data);
 		}
