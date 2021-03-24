@@ -4,9 +4,9 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id_Document_User = db.Column(db.String(25), primary_key=True)
-    name_User = db.Column(db.String(120), nullable=False)
-    active_User = db.Column(db.String(80), nullable=False)
-    properties = db.relationship('User_Details', backref='user', lazy=True)
+    name_User = db.Column(db.String(120),unique=True, nullable=False)
+    active_User = db.Column(db.Boolean(), default=True, nullable=False)
+    properties = db.relationship('User_Details', uselist = False, backref='user', lazy=True)
     move = db.relationship('Movement_Inventory', backref='user', lazy=True)
 
     def __repr__(self):
@@ -122,9 +122,8 @@ class Product(db.Model):
             }
 class Product_Details(db.Model):
     id_Product_Details = db.Column(db.Integer, primary_key=True)
-    id_Product = db.Column(db.String(25), db.ForeignKey('product.id_Product') )
+    id_Product = db.Column(db.String(25), db.ForeignKey('product.id_Product'))
     trade_Product_Details = db.Column(db.String(30), nullable=False)
-    image_Product_Details = db.Column(db.String(150), nullable=False)
     tax_Product_Details = db.Column(db.Float, nullable=False)
     description_Product_Details = db.Column(db.String(350), nullable=False)
     price_In_Product_Details = db.Column(db.Float, nullable=False)
@@ -140,7 +139,6 @@ class Product_Details(db.Model):
             'id_Product_Details':self.id_Product_Details,
             'id_Product': self.id_Product,
             'trade_Product_Details':self.trade_Product_Details,
-            'image_Product_Details':self.image_Product_Details,
             'tax_Product_Details':self.tax_Product_Details,
             'description_Product_Details':self.description_Product_Details,
             'price_In_Product_Details':self.price_In_Product_Details,

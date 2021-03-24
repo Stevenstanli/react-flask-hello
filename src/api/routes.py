@@ -4,6 +4,9 @@ This module takes care of starting the API Server, Loading the DB and Adding the
 from flask import Flask, request, jsonify, url_for, Blueprint
 from api.models import db, User, User_Details, Provider, Provider_Details, Category, Product , Product_Details, Inventory, Movement_Inventory
 from api.utils import generate_sitemap, APIException
+from werkzeug.security import generate_password_hash, check_password_hash
+from flask_jwt_extended import create_access_token, jwt_required, get_jwt_identity
+import datetime
 
 api = Blueprint('api', __name__)
 
@@ -220,14 +223,13 @@ def add_product():
     request_body = request.get_json()
     product = Product(id_Product=request_body["id_Product"],
                          name_Product=request_body["name_Product"],
-                         id_Category=request_body["id_Category"],
-                         id_Provider=request_body["id_Provider"],
+                        #  id_Category=request_body["id_Category"],
+                        #  id_Provider=request_body["id_Provider"],
                          active_Product=request_body["active_Product"])
     properties = Product_Details(
                             id_Product_Details=request_body["id_Product"],
                             id_Product=request_body["id_Product"],
                             trade_Product_Details=request_body["trade_Product_Details"],
-                            image_Product_Details=request_body["image_Product_Details"], 
                             tax_Product_Details=request_body["tax_Product_Details"],
                             description_Product_Details=request_body["description_Product_Details"],
                             price_In_Product_Details=request_body["price_In_Product_Details"],
