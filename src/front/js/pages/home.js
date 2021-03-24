@@ -1,38 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, Fragment } from "react";
 import { Context } from "../store/appContext";
-import rigoImageUrl from "../../img/rigo-baby.jpg";
+import rigoImageUrl from "../../img/arshad-pooloo-FK3s0hRpMNM-unsplash.jpg";
 import "../../styles/home.scss";
+import Jumbotron from "react-bootstrap/Jumbotron";
 import Button from "react-bootstrap/Button";
-import Dropdown from "react-bootstrap/Dropdown";
+import Container from "react-bootstrap/Container";
+import Row from "react-bootstrap/Row";
+import Col from "react-bootstrap/Col";
+import Image from "react-bootstrap/Image";
+import Card from "react-bootstrap/Card";
+import CardDeck from "react-bootstrap/CardDeck";
+import { Histories } from "../component/histories";
+import { Header } from "../component/header";
+import { AppList } from "../component/appList";
+import { Team } from "../component/team";
+import { Contact } from "../component/contact";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
 
 	return (
-		<div className="text-center mt-5">
-			<h1>Hello Rigo!</h1>
-			<p>
-				<img src={rigoImageUrl} />
-			</p>
-			<div className="alert alert-info">{store.message || "Loading message from the backend..."}</div>
-			<p>
-				This boilerplate comes with lots of documentation:{" "}
-				<a href="https://github.com/4GeeksAcademy/react-flask-hello/tree/95e0540bd1422249c3004f149825285118594325/docs">
-					Read documentation
-				</a>
-			</p>
-			<Button variant="dark">Dark</Button>{" "}
-			<Dropdown>
-				<Dropdown.Toggle variant="success" id="dropdown-basic">
-					Dropdown Button
-				</Dropdown.Toggle>
+		<Fragment>
+			<Row>
+				<Header></Header>
+			</Row>
 
-				<Dropdown.Menu>
-					<Dropdown.Item href="#/action-1">Action</Dropdown.Item>
-					<Dropdown.Item href="#/action-2">Another action</Dropdown.Item>
-					<Dropdown.Item href="#/action-3">Something else</Dropdown.Item>
-				</Dropdown.Menu>
-			</Dropdown>
-		</div>
+			<Row className="apps title">
+				<Col md={12}>
+					<h1 className="header-content">Una aplicacion para cada necesidad</h1>
+				</Col>
+			</Row>
+			<Row className="apps">
+				<AppList></AppList>
+			</Row>
+
+			<Row className="history">
+				<Histories></Histories>
+			</Row>
+
+			<Row className="cards">
+				<Col md={12}>
+					<h1 className="header-content">Desarrolladores</h1>
+				</Col>
+			</Row>
+			<Team></Team>
+			<Contact></Contact>
+		</Fragment>
 	);
 };
