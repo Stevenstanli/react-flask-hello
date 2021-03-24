@@ -15,7 +15,9 @@ import { Reports } from "./pages/reports";
 import injectContext from "./store/appContext";
 import { Category } from "./pages/category";
 
+
 import { Navigation } from "./component/navigation";
+
 import { Footer } from "./component/footer";
 
 //create your first component

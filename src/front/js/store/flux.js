@@ -18,40 +18,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			providers: null,
 			datosUpdate: null,
 			category: null,
-			products: [
-				{
-					id_Product: "1",
-					name_Product: "Vino tinto",
-					id_Category: "Bebida",
-					id_Provider: "1A",
-					provider: "Mucho vino tinto",
-					cantidad: "3"
-				},
-				{
-					id_Product: "2",
-					name_Product: "Vino blanco",
-					id_Category: "Bebida",
-					id_Provider: "1A",
-					provider: "Mucho vino tinto",
-					cantidad: "9"
-				},
-				{
-					id_Product: "3",
-					name_Product: "Vino tinto suave",
-					id_Category: "Bebida",
-					id_Provider: "1B",
-					provider: "Distribuidora de vinos",
-					cantidad: "20"
-				},
-				{
-					id_Product: "4",
-					name_Product: "Vino tinto amargo",
-					id_Category: "Bebida",
-					id_Provider: "1B",
-					provider: "Distribuidora de vinos",
-					cantidad: "14"
-				}
-			]
+			products: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -84,12 +51,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//-----------------------------------Category------------------------------------------------------------------------
 
 			loadCategory: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category")
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category")
 					.then(response => response.json())
 					.then(response => setStore({ category: response }));
 			},
 			insertCategory: data => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/category", {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category", {
 					method: "POST",
 					headers: {
 						"Content-Type": "application/json"
@@ -99,17 +66,68 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log("Success:", data);
-						setStore({ category: data });
+						setStore({ category: getStore().category, data });
+					})
+					.then(() => {
+						getActions().loadCategory();
 					})
 					.catch(error => {
 						console.error("Error:", error);
 					});
 			},
 
+			updateCategory: data => {
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateCategory: data => {
+				console.log(data);
+				fetch(
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryEliminate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
 			//-----------------------------------Provider------------------------------------------------------------------------
 			insertData: data => {
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider",
 
 					{
 						method: "POST",
@@ -132,14 +150,14 @@ const getState = ({ getStore, getActions, setStore }) => {
 					});
 			},
 			loadProviders: () => {
-				fetch("https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/provider")
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider")
 					.then(response => response.json())
 					.then(response => setStore({ providers: response }));
 			},
 
 			updateProvider: data => {
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
 
 					{
 						method: "PUT",
@@ -164,7 +182,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateProvider: data => {
 				console.log(data);
 				fetch(
-					"https://3001-plum-catshark-11aarra7.ws-us03.gitpod.io/api/providerEliminate/" + data.id_Provider,
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerEliminate/" +
+						data.id_Provider,
 
 					{
 						method: "PUT",
@@ -189,8 +208,30 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//--------------------------------------------Users---------------------------------------------------------------
 			insertUserdata: data => {
 				console.log(data);
+				/*fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ providers: data });
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});*/
+			},
+			insertLogindata: data => {
+				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/login",
 
 					{
 						method: "POST",
@@ -209,10 +250,16 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("Error:", error);
 					});
 			},
-			insertLogindata: data => {
+			// ---------------------------------Products-----------------------------------------------------------------------------
+			loadProducts: () => {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product")
+					.then(response => response.json())
+					.then(response => setStore({ products: response }));
+			},
+			insertProducts: data => {
 				console.log(data);
 				fetch(
-					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product",
 
 					{
 						method: "POST",
@@ -225,7 +272,58 @@ const getState = ({ getStore, getActions, setStore }) => {
 					.then(response => response.json())
 					.then(data => {
 						console.log("Success:", data);
-						setStore({ providers: data });
+						setStore({ products: getStore().products, data });
+					})
+					.then(() => {
+						getActions().loadProducts();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			updateProduct: data => {
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productUpdate/" + data.id_Product,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProducts();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateProduct: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productEliminate/" + data.id_Product,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProducts();
 					})
 					.catch(error => {
 						console.error("Error:", error);

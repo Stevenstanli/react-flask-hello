@@ -95,25 +95,63 @@ def update_Eliminate(id_Provider):
 
 
 
-#------------------------------------------------------User----------------------------------------------------------------------------
+#------------------------------------------------------Category----------------------------------------------------------------------------
 
-
+#------------------------------------Seleccionar-------------------------------------
 @api.route('/category',methods=['GET'])
 def listCategory():
-    category = Provider.query.all()
-    provider_serialized = list(map(lambda data: data.serialize(), category))
-    return jsonify(provider_serialized),200
+    category = Category.query.all()
+    category_serialized = list(map(lambda data: data.serialize(), category))
+    return jsonify(category_serialized),200
 
+#---------------------------------Ingresar-------------------------------------------
 @api.route('/category',methods=['POST'])
 def addCategory():
     request_body = request.get_json()
-    category = Category(id_Category=request_body["id_Category"],
-                        name_Category=request_body["name_Category"],
+    category = Category(name_Category=request_body["name_Category"],
                         description_Category=request_body["description_Category"],
                         active_Product=request_body["active_Product"])
     print(request_body)
     db.session.add(category)
     db.session.commit()
+    return jsonify("All good"), 200
+
+#-------------------------------Actualizar----------------------------------------------
+@api.route('/categoryUpdate/<string:id_Category>', methods=['PUT'])
+def update_Category(id_Category):
+
+    # recibir info del request
+    
+    cat = Category.query.get(id_Category)
+
+    if cat  is None:
+        raise APIException('Category not found', status_code=404)
+        
+    request_body = request.get_json()
+
+    if "name_Category" in request_body:
+        cat.name_Category = request_body ["name_Category"]
+    if  "description_Category" in request_body:
+        cat.description_Category = request_body ["description_Category"]
+
+    db.session.commit()
+
+    return jsonify("All good"), 200
+
+#------------------------------Eliminar------------------------------------------------
+@api.route('/categoryEliminate/<string:id_Category>', methods=['PUT'])
+def Eliminate_Category(id_Category):
+
+    
+    cat = Category.query.get(id_Category)
+    
+    if cat  is None:
+        raise APIException('Category not found', status_code=404)
+
+    request_body = request.get_json()
+    db.session.delete(cat)
+    db.session.commit()
+
     return jsonify("All good"), 200
 
 #------------------------------------------------------User----------------------------------------------------------------------------
@@ -146,7 +184,14 @@ def add_user():
 
 @api.route('/login',methods=['POST'])
 def login():
+
+    #login
+    userlogin = request.json.get("name_User", None)
+    passwordlogin = request.json.get("password_User_Details",None)
+    
+
     request_body = request.get_json()
+
 
     user = User(
                 name_User = request_body["name_User"], 
@@ -171,14 +216,13 @@ def add_product():
     request_body = request.get_json()
     product = Product(id_Product=request_body["id_Product"],
                          name_Product=request_body["name_Product"],
-                         id_Category=request_body["id_Category"],
-                         id_Provider=request_body["id_Provider"],
+                        #  id_Category=request_body["id_Category"],
+                        #  id_Provider=request_body["id_Provider"],
                          active_Product=request_body["active_Product"])
     properties = Product_Details(
                             id_Product_Details=request_body["id_Product"],
                             id_Product=request_body["id_Product"],
                             trade_Product_Details=request_body["trade_Product_Details"],
-                            image_Product_Details=request_body["image_Product_Details"], 
                             tax_Product_Details=request_body["tax_Product_Details"],
                             description_Product_Details=request_body["description_Product_Details"],
                             price_In_Product_Details=request_body["price_In_Product_Details"],

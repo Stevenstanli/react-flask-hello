@@ -25,28 +25,15 @@ export const ProductsByProvider = () => {
 	const { store, actions } = useContext(Context);
 	return (
 		<div>
-			{!!store.products &&
-				store.products.map((item, index) => {
+			{!!store.providers &&
+				store.providers.map((item, i) => {
 					return (
-						<Accordion key={item} defaultActiveKey="0">
+						<Accordion key={i} defaultActiveKey="0">
 							<Card className="second-accordion">
 								{/* Segundo acordión: Nombre de proveedor */}
 								<Accordion.Toggle as={Button} variant="link" eventKey="1">
-									{item.provider}
+									{store.providers[i].name_Provider}
 								</Accordion.Toggle>
-								<Accordion.Collapse eventKey="1">
-									<Card.Body>
-										{/* Tercer acordión: cartas de productos */}
-										<div>
-											<Accordion defaultActiveKey="0">
-												<OrderList />
-											</Accordion>
-											<Card className="cards-container">
-												<OrderCard />
-											</Card>
-										</div>
-									</Card.Body>
-								</Accordion.Collapse>
 							</Card>
 						</Accordion>
 					);

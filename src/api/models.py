@@ -84,8 +84,8 @@ class Provider_Details(db.Model):
 class Category(db.Model):
     id_Category = db.Column(db.Integer, primary_key=True)
     name_Category = db.Column(db.String(120), nullable=False)
-    description_Category = db.Column(db.Integer, nullable=False)
-    active_Product = db.Column(db.String(3), nullable=False)
+    description_Category = db.Column(db.String(250), nullable=False)
+    active_Product = db.Column(db.Boolean, nullable=False)
     properties = db.relationship('Product', backref='category', lazy=True)
    
     def __repr__(self):
@@ -122,9 +122,8 @@ class Product(db.Model):
             }
 class Product_Details(db.Model):
     id_Product_Details = db.Column(db.Integer, primary_key=True)
-    id_Product = db.Column(db.String(25), db.ForeignKey('product.id_Product') )
+    id_Product = db.Column(db.String(25), db.ForeignKey('product.id_Product'))
     trade_Product_Details = db.Column(db.String(30), nullable=False)
-    image_Product_Details = db.Column(db.String(150), nullable=False)
     tax_Product_Details = db.Column(db.Float, nullable=False)
     description_Product_Details = db.Column(db.String(350), nullable=False)
     price_In_Product_Details = db.Column(db.Float, nullable=False)
@@ -140,7 +139,6 @@ class Product_Details(db.Model):
             'id_Product_Details':self.id_Product_Details,
             'id_Product': self.id_Product,
             'trade_Product_Details':self.trade_Product_Details,
-            'image_Product_Details':self.image_Product_Details,
             'tax_Product_Details':self.tax_Product_Details,
             'description_Product_Details':self.description_Product_Details,
             'price_In_Product_Details':self.price_In_Product_Details,
