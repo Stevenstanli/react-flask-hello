@@ -1,3 +1,55 @@
 /* 
     General Styles
 */
+.row{
+    margin: 0;
+    padding: 0;
+}
+
+.style{
+    font-size: 325% !important;
+    margin-left: 15px;
+    margin-right: 10px;
+    color: #008C9E !important;
+
+    
+}
+.brand-ri{
+    float: right;
+    font-family: 'Mitr', sans-serif;
+    font-size: 40px !important;
+    margin-top: -5px;
+}
+.brand-ri span{
+    font-size: 12px !important;
+    font-family: 'Recursive', sans-serif;
+    display: block;
+    margin-top: -13px;
+}.brand-ri .div{
+    margin-top: -22px;
+}
+.navs{
+    font-family: 'Oswald', sans-serif;
+    font-size: 22px !important;
+    color: #008C9E !important;
+    font-family: 'Roboto', sans-serif;
+}
+.jumbotron{
+    background-image: url("../img/jose-vazquez-Q5RBHz9cu1A-unsplash.jpg");
+    width: 100%;
+    background-size: 100% 100%;
+    background-repeat:no-repeat;
+    background-size: cover;
+    height:600px !important;
+}
+.right{
+    float: right;
+    display: block;
+}
+
+.shawdow-ban{
+    background-color: rgba(189, 183, 183, 0.5);
+    padding: 1em;
+    margin-top: -20px;
+    
+}
