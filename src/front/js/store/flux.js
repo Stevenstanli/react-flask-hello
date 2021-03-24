@@ -323,7 +323,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.log("Success:", data);
 					})
 					.then(() => {
-						getActions().loadProviders();
+						getActions().loadProducts();
 					})
 					.catch(error => {
 						console.error("Error:", error);
