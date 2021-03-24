@@ -106,6 +106,8 @@ export const AddProduct = () => {
 		actions.loadCategory();
 	}, []);
 	console.log(store.providers);
+	console.log(store.Products);
+	console.log(store.category);
 
 	return (
 		!!store.products && (
@@ -145,10 +147,11 @@ export const AddProduct = () => {
 						<Form.Row>
 							{/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<ARREGLAR: asociar con proveedor */}
 							<Form.Group as={Col}>
+								<Form.Label>Proveedor</Form.Label>
 								<Form.Control
 									as="select"
 									className="dropdown-provider"
-									onChange={e => console.log(e.target.value)}>
+									onChange={e => setTrade_Product_Details(e.target.value)}>
 									{!!store.providers &&
 										store.providers.map((item, i) => {
 											return (
@@ -162,19 +165,28 @@ export const AddProduct = () => {
 							</Form.Group>
 							{/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<ARREGLAR: asociar con categoría */}
 							<Form.Group as={Col}>
-								<Form.Control as="select" className="dropdown-category">
-									<option>Categoría</option>
-									<option>Bebidas</option>
-									<option>Cuidado personal</option>
+								<Form.Label>Categoría</Form.Label>
+								<Form.Control
+									as="select"
+									className="dropdown-category"
+									onChange={e => console.log(e.target.value)}>
+									{!!store.category &&
+										store.category.map((item, i) => {
+											return (
+												<option key={i} value={store.category[i].id_Category}>
+													{store.category[i].name_Category}
+												</option>
+											);
+										})}
 								</Form.Control>
 							</Form.Group>
 							<Form.Group as={Col}>
+								<Form.Label>Impuesto</Form.Label>
 								<Form.Control
 									as="select"
 									className="dropdown-tax"
 									value={tax_Product_Details}
 									onChange={e => setTax_Product_Details(e.target.value)}>
-									<option>Impuesto</option>
 									<option>0.2</option>
 									<option>0.1</option>
 									<option>0.13</option>

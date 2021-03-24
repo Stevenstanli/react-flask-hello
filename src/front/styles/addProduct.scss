@@ -15,18 +15,23 @@
     margin-top: 10px;
     font-size: 500% !important;
 }
-
 .dropdown-provider{ 
     background-color: white;
     display: flex;
+    min-width: 158px;
+}
+.dropdown-category{ 
+    background-color: white;
+    display: flex;
+    min-width: 158px;
 }
 .dropdown-tax{ 
     background-color: white;
     display: flex;
-    margin-right: -15px;
+    min-width: 158px;
 }
 .set-name{
     display: flex;
-    min-width: 480px;
+    min-width: 495px;
 }
 
