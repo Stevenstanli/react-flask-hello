@@ -158,12 +158,14 @@ def Eliminate_Category(id_Category):
 
 #------------------------------------------------------User----------------------------------------------------------------------------
 
+#----------------------------------------Seleccionar--------------------------------
 @api.route('/user',methods=['GET'])
 def get_user():
     user = User.query.all()
     user_serialized = list(map(lambda data: data.serialize(), user))
     return jsonify(user_serialized),200
 
+#----------------------------------------Ingresar-----------------------------------
 @api.route('/user',methods=['POST'])
 def add_user():
     request_body = request.get_json()
