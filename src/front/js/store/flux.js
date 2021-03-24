@@ -282,51 +282,6 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("Error:", error);
 					});
 			},
-			insertChangepassdata: data => {
-				console.log(data);
-				fetch(
-					"",
-
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json"
-						},
-						body: JSON.stringify(data)
-					}
-				)
-					.then(response => response.json())
-					.then(data => {
-						console.log("Success:", data);
-						setStore({ providers: data });
-					})
-					.catch(error => {
-						console.error("Error:", error);
-					});
-			},
-			/*insertNewpassdata: data => {
-				console.log(data);
-				fetch(
-					"",
-
-					{
-						method: "POST",
-						headers: {
-							"Content-Type": "application/json"
-						},
-						body: JSON.stringify(data)
-					}
-				)
-					.then(response => response.json())
-					.then(data => {
-						console.log("Success:", data);
-						setStore({ providers: data });
-					})
-					.catch(error => {
-						console.error("Error:", error);
-					});
-                },
-            */
 
 			//Sección de funciones para página de reportes
 			// Filtra productos por proveedor para reporte
