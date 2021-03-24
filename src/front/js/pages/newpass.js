@@ -1,8 +1,26 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "../../styles/register.scss";
 
 export function Newpass() {
+	/* const { store, actions } = useContext(Context);
+	const [password_User_Details, setPassword_User_Details] = useState("");
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		if (password_User_Details === "") {
+			alert("Existen campos vacios");
+		} else {
+			const data = {
+				password_User_Details: password_User_Details,
+				active_User: true
+			};
+			actions.insertNewpassdata(data);
+		}
+     };
+  */
+
 	return (
 		<>
 			<Row className="vh-100 align-items-center">
