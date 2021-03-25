@@ -21,17 +21,7 @@ export function OrderCard() {
 									{/* Nombre del producto */}
 									<h3 className="product-name">{store.products[i].name_Product}</h3>
 									{/* Nombre del proveedor */}
-									{!!store.providers &&
-										store.providers.map((item, i) => {
-											if (store.products[i].id_Provider == store.providers[i].id_Provider) {
-												return (
-													<h5 key={i} className="provider-name">
-														{store.providers[i].name_Provider}
-													</h5>
-												);
-											}
-										})}
-
+									<h5>Nombre Proveedor</h5>
 									<span className="product-size">{store.products[i].id_Product}</span>
 									<hr className="line" />
 									<div className="buttons-group">
