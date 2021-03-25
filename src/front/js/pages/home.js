@@ -52,7 +52,7 @@ export const Home = () => {
 					<h1 className="header-content">Desarrolladores</h1>
 				</Col>
 			</Row>
-    
+
 			<Team></Team>
 			<Contact></Contact>
 			<Row className="mapas">
