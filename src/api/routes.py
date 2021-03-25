@@ -236,8 +236,8 @@ def add_product():
     request_body = request.get_json()
     product = Product(id_Product=request_body["id_Product"],
                          name_Product=request_body["name_Product"],
-                        #  id_Category=request_body["id_Category"],
-                        #  id_Provider=request_body["id_Provider"],
+                         id_Category=request_body["id_Category"],
+                         id_Provider=request_body["id_Provider"],
                          active_Product=request_body["active_Product"])
     properties = Product_Details(
                             id_Product_Details=request_body["id_Product"],

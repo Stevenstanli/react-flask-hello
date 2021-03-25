@@ -2,10 +2,10 @@
     display: flex;
     justify-content: space-around;
 }
-.add-product-form { border:solid 10px lightgray;
+.add-product-form { border:solid 10px white;
     display: flex;
     flex-direction: column;
-    background-color: lightgray;
+    background-color: white;
     border-radius: 10px;
     align-items: center;
 }
@@ -18,20 +18,31 @@
 .dropdown-provider{ 
     background-color: white;
     display: flex;
-    min-width: 158px;
+    min-width: 150px;
 }
 .dropdown-category{ 
     background-color: white;
     display: flex;
-    min-width: 158px;
+    width: 150px;
 }
 .dropdown-tax{ 
     background-color: white;
     display: flex;
-    min-width: 158px;
+    width: 150px;
 }
 .set-name{
     display: flex;
-    min-width: 495px;
+    width: 470px;
+}
+.guardar-button{
+    display: flex;
+    min-width: 230px;
+}
+.actualizar-button{
+    display: flex;
+    min-width: 230px;
+}
+.symbol-fontawesome{
+    font-size: 150%;
 }
 

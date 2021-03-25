@@ -113,7 +113,7 @@ class Product(db.Model):
 
     def serialize(self):
         return {
-            "id_Product ": self.id_Product,
+            "id_Product": self.id_Product,
             "name_Product": self.name_Product,
             "id_Category": self.id_Category,
             'id_Provider':self.id_Provider,
