@@ -38,12 +38,12 @@ export const Home = () => {
 
 			<Row className="history">
 				<Col md={10}>
-					<Histories></Histories>
+					<Histories />
 				</Col>
 			</Row>
 			<Row className="history justify-content-end">
 				<Col md={10}>
-					<HistoriesIz></HistoriesIz>
+					<HistoriesIz />
 				</Col>
 			</Row>
 
@@ -53,10 +53,10 @@ export const Home = () => {
 				</Col>
 			</Row>
 
-			<Team></Team>
-			<Contact></Contact>
+			<Team />
+			<Contact />
 			<Row className="mapas">
-				<Maps></Maps>
+				<Maps />
 			</Row>
 		</Fragment>
 	);

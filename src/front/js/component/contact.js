@@ -84,7 +84,8 @@ export const Contact = () => {
 									className="form-control"
 									id="w3lMessage"
 									placeholder="Escribanos"
-									required=""></textarea>
+									required=""
+								/>
 								<button type="submit" className="btn btn-contact">
 									Enviar
 								</button>
