@@ -5,10 +5,11 @@ import "../../styles/addProduct.scss";
 
 export const AddProduct = () => {
 	const [id_Product, setId_Product] = useState("");
+	const [id_Provider, setId_Provider] = useState("");
+	const [id_Category, setId_Category] = useState("");
 	const [name_Product, setName_Product] = useState("");
 	const [trade_Product_Details, setTrade_Product_Details] = useState("");
 	const [id_trade_Product_Details, setId_Trade_Product_Details] = useState("");
-	const [image_Product_Details, setImage_Product_Details] = useState("");
 	const [tax_Product_Details, setTax_Product_Details] = useState("");
 	const [description_Product_Details, setDescription_Product_Details] = useState("");
 	const [price_In_Product_Details, setPrice_In_Product_Details] = useState("");
@@ -19,6 +20,8 @@ export const AddProduct = () => {
 	const update = data => {
 		console.log(data);
 		setId_Product(data.id_Product);
+		setId_Provider(data.id_Provider);
+		setId_Category(data.id_Category);
 		setName_Product(data.name_Product);
 		setTrade_Product_Details(data.properties[0].trade_Product_Details);
 		setTax_Product_Details(data.properties[0].tax_Product_Details);
@@ -32,6 +35,8 @@ export const AddProduct = () => {
 	const handleUpdate = () => {
 		if (
 			id_Product === "" ||
+			id_Provider === "" ||
+			id_Category === "" ||
 			name_Product === "" ||
 			trade_Product_Details === "" ||
 			tax_Product_Details === "" ||
@@ -45,6 +50,8 @@ export const AddProduct = () => {
 		} else {
 			const data = {
 				id_Product: id_Product,
+				id_Provider: id_Provider,
+				id_Category: id_Category,
 				name_Product: name_Product,
 				trade_Product_Details: trade_Product_Details,
 				tax_Product_Details: tax_Product_Details,
@@ -53,11 +60,13 @@ export const AddProduct = () => {
 				profit_Product_Details: profit_Product_Details,
 				price_Out_Product_Details: price_Out_Product_Details,
 				discount_Product_Details: discount_Product_Details,
-				active_Product: "activo"
+				active_Product: "Activo"
 			};
 			actions.updateProduct(data);
 
 			setId_Product("");
+			setId_Provider("");
+			setId_Category("");
 			setName_Product("");
 			setTrade_Product_Details("");
 			setTax_Product_Details("");
@@ -73,6 +82,8 @@ export const AddProduct = () => {
 		e.preventDefault();
 		if (
 			id_Product === "" ||
+			id_Provider === "" ||
+			id_Category === "" ||
 			name_Product === "" ||
 			trade_Product_Details === "" ||
 			tax_Product_Details === "" ||
@@ -86,6 +97,8 @@ export const AddProduct = () => {
 		} else {
 			const data = {
 				id_Product: id_Product,
+				id_Provider: id_Provider,
+				id_Category: id_Category,
 				name_Product: name_Product,
 				trade_Product_Details: trade_Product_Details,
 				tax_Product_Details: tax_Product_Details,
@@ -94,7 +107,7 @@ export const AddProduct = () => {
 				profit_Product_Details: profit_Product_Details,
 				price_Out_Product_Details: price_Out_Product_Details,
 				discount_Product_Details: discount_Product_Details,
-				active_Product: "activo"
+				active_Product: "Activo"
 			};
 			actions.insertProducts(data);
 		}
@@ -106,7 +119,7 @@ export const AddProduct = () => {
 		actions.loadCategory();
 	}, []);
 	console.log(store.providers);
-	console.log(store.Products);
+	console.log(store.products);
 	console.log(store.category);
 
 	return (
@@ -121,9 +134,16 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="Nombre"
-									className="set-name"
 									value={name_Product}
 									onChange={e => setName_Product(e.target.value)}
+								/>
+							</Form.Group>
+							<Form.Group as={Col}>
+								<Form.Control
+									type="text"
+									placeholder="Marca"
+									value={trade_Product_Details}
+									onChange={e => setTrade_Product_Details(e.target.value)}
 								/>
 							</Form.Group>
 						</Form.Row>
@@ -140,6 +160,7 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="Código"
+									value={id_Product}
 									onChange={e => setId_Product(e.target.value)}
 								/>
 							</Form.Group>
@@ -151,7 +172,8 @@ export const AddProduct = () => {
 								<Form.Control
 									as="select"
 									className="dropdown-provider"
-									onChange={e => setTrade_Product_Details(e.target.value)}>
+									value={id_Provider}
+									onChange={e => setId_Provider(e.target.value)}>
 									{!!store.providers &&
 										store.providers.map((item, i) => {
 											return (
@@ -161,7 +183,6 @@ export const AddProduct = () => {
 											);
 										})}
 								</Form.Control>
-								<h3>{id_trade_Product_Details}</h3>
 							</Form.Group>
 							{/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<ARREGLAR: asociar con categoría */}
 							<Form.Group as={Col}>
@@ -169,7 +190,8 @@ export const AddProduct = () => {
 								<Form.Control
 									as="select"
 									className="dropdown-category"
-									onChange={e => console.log(e.target.value)}>
+									value={id_Category}
+									onChange={e => setId_Category(e.target.value)}>
 									{!!store.category &&
 										store.category.map((item, i) => {
 											return (
@@ -199,6 +221,7 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="% Ganancia"
+									value={profit_Product_Details}
 									onChange={e => setProfit_Product_Details(e.target.value)}
 								/>
 							</Form.Group>
@@ -206,6 +229,7 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="Descuento"
+									value={discount_Product_Details}
 									onChange={e => setDiscount_Product_Details(e.target.value)}
 								/>
 							</Form.Group>
@@ -215,6 +239,7 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="Precio de costo"
+									value={price_In_Product_Details}
 									onChange={e => setPrice_In_Product_Details(e.target.value)}
 								/>
 							</Form.Group>
@@ -222,6 +247,7 @@ export const AddProduct = () => {
 								<Form.Control
 									type="text"
 									placeholder="Precio de venta"
+									value={price_Out_Product_Details}
 									onChange={e => setPrice_Out_Product_Details(e.target.value)}
 								/>
 							</Form.Group>
@@ -259,15 +285,27 @@ export const AddProduct = () => {
 								if (item.active_Product == "Activo") {
 									return (
 										<tr key={i}>
-											<td>{i + 1}</td>
-											<td>{store.products[i].id_Product}</td>
-											<td>{store.products[i].name_Product}</td>
-											<td>{item.products[0].price_In_Product_Details}</td>
-											<td>{item.properties[0].tax_Product_Details}</td>
-											<td>{item.products[0].price_Out_Product_Details}</td>
+											<td>
+												<h6>{i + 1}</h6>
+											</td>
+											<td>
+												<h6>{store.products[i].id_Product}</h6>
+											</td>
+											<td>
+												<h6>{store.products[i].name_Product}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].price_In_Product_Details}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].tax_Product_Details}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].price_Out_Product_Details}</h6>
+											</td>
 											<td>
 												<i
-													className="fas fa-pen"
+													className="fas fa-pen symbol-fontawesome"
 													onClick={() => {
 														update(item);
 													}}
@@ -275,7 +313,7 @@ export const AddProduct = () => {
 											</td>
 											<td>
 												<i
-													className="fas fa-trash-alt"
+													className="fas fa-trash-alt symbol-fontawesome"
 													onClick={() => {
 														actions.eliminateProduct(item);
 													}}
