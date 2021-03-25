@@ -17,7 +17,7 @@ export const Contact = () => {
 						<div className="cont-details">
 							<div className="cont-top">
 								<div className="cont-left text-center">
-									<span className="fa fa-phone text-primary"></span>
+									<span className="fa fa-phone text-primary" />
 								</div>
 								<div className="cont-right">
 									<h3>Llamenos</h3>
@@ -28,7 +28,7 @@ export const Contact = () => {
 							</div>
 							<div className="cont-top margin-up">
 								<div className="cont-left text-center">
-									<span className="fa fa-envelope-o text-primary"></span>
+									<span className="fa fa-envelope-o text-primary" />
 								</div>
 								<div className="cont-right">
 									<h3>Correo Electronico</h3>
@@ -41,7 +41,7 @@ export const Contact = () => {
 							</div>
 							<div className="cont-top margin-up">
 								<div className="cont-left text-center">
-									<span className="fa fa-map-marker text-primary"></span>
+									<span className="fa fa-map-marker text-primary" />
 								</div>
 								<div className="cont-right">
 									<h3>Direccion</h3>
@@ -85,6 +85,8 @@ export const Contact = () => {
 									id="w3lMessage"
 									placeholder="Escribanos"
 									required=""></textarea>
+									required=""
+								/>
 								<button type="submit" className="btn btn-contact">
 									Enviar
 								</button>

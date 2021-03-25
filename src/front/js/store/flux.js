@@ -78,7 +78,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 			updateCategory: data => {
 				fetch(
-					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
 
 					{
 						method: "PUT",
@@ -103,7 +103,8 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateCategory: data => {
 				console.log(data);
 				fetch(
-					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/categoryEliminate/" + data.id_Category,
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/categoryEliminate/" +
+						data.id_Category,
 
 					{
 						method: "PUT",
@@ -208,7 +209,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			//--------------------------------------------Users---------------------------------------------------------------
 			insertUserdata: data => {
 				console.log(data);
-				/*fetch(
+				fetch(
 					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
 
 					{
@@ -226,7 +227,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 					})
 					.catch(error => {
 						console.error("Error:", error);
-					});*/
+					});
 			},
 			insertLogindata: data => {
 				console.log(data);

@@ -4,9 +4,9 @@ db = SQLAlchemy()
 
 class User(db.Model):
     id_Document_User = db.Column(db.String(25), primary_key=True)
-    name_User = db.Column(db.String(120), nullable=False)
-    active_User = db.Column(db.String(80), nullable=False)
-    properties = db.relationship('User_Details', backref='user', lazy=True)
+    name_User = db.Column(db.String(120),unique=True, nullable=False)
+    active_User = db.Column(db.Boolean(), default=True, nullable=False)
+    properties = db.relationship('User_Details', uselist = False, backref='user', lazy=True)
     move = db.relationship('Movement_Inventory', backref='user', lazy=True)
 
     def __repr__(self):
@@ -113,7 +113,7 @@ class Product(db.Model):
 
     def serialize(self):
         return {
-            "id_Product ": self.id_Product,
+            "id_Product": self.id_Product,
             "name_Product": self.name_Product,
             "id_Category": self.id_Category,
             'id_Provider':self.id_Provider,

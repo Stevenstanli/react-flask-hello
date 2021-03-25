@@ -25,13 +25,13 @@ export const Team = () => {
 								</h4>
 								<ul className="social">
 									<li>
-										<a href="#" className="facebook" title="Go to Our Facebook Page"></a>
+										<a href="#" className="facebook" title="Go to Our Facebook Page" />
 									</li>
 									<li>
-										<a href="#" className="twitter" title="Go to Our Twitter Account"></a>
+										<a href="#" className="twitter" title="Go to Our Twitter Account" />
 									</li>
 									<li>
-										<a href="#" className="googleplus" title="Go to Our Google Plus Account"></a>
+										<a href="#" className="googleplus" title="Go to Our Google Plus Account" />
 									</li>
 								</ul>
 							</figcaption>
@@ -44,13 +44,13 @@ export const Team = () => {
 								</h4>
 								<ul className="social">
 									<li>
-										<a href="#" className="facebook" title="Go to Our Facebook Page"></a>
+										<a href="#" className="facebook" title="Go to Our Facebook Page" />
 									</li>
 									<li>
-										<a href="#" className="twitter" title="Go to Our Twitter Account"></a>
+										<a href="#" className="twitter" title="Go to Our Twitter Account" />
 									</li>
 									<li>
-										<a href="#" className="googleplus" title="Go to Our Google Plus Account"></a>
+										<a href="#" className="googleplus" title="Go to Our Google Plus Account" />
 									</li>
 								</ul>
 							</figcaption>
@@ -63,13 +63,13 @@ export const Team = () => {
 								</h4>
 								<ul className="social">
 									<li>
-										<a href="#" className="facebook" title="Go to Our Facebook Page"></a>
+										<a href="#" className="facebook" title="Go to Our Facebook Page" />
 									</li>
 									<li>
-										<a href="#" className="twitter" title="Go to Our Twitter Account"></a>
+										<a href="#" className="twitter" title="Go to Our Twitter Account" />
 									</li>
 									<li>
-										<a href="#" className="googleplus" title="Go to Our Google Plus Account"></a>
+										<a href="#" className="googleplus" title="Go to Our Google Plus Account" />
 									</li>
 								</ul>
 							</figcaption>
@@ -82,13 +82,13 @@ export const Team = () => {
 								</h4>
 								<ul className="social">
 									<li>
-										<a href="#" className="facebook" title="Go to Our Facebook Page"></a>
+										<a href="#" className="facebook" title="Go to Our Facebook Page" />
 									</li>
 									<li>
-										<a href="#" className="twitter" title="Go to Our Twitter Account"></a>
+										<a href="#" className="twitter" title="Go to Our Twitter Account" />
 									</li>
 									<li>
-										<a href="#" className="googleplus" title="Go to Our Google Plus Account"></a>
+										<a href="#" className="googleplus" title="Go to Our Google Plus Account" />
 									</li>
 								</ul>
 							</figcaption>
