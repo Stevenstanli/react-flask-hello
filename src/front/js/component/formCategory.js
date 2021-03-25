@@ -90,16 +90,17 @@ export const FormCategory = () => {
 									</Form.Group>
 								</Form.Row>
 								<Button size="sm" variant="primary" type="submit">
-									Submit
+									Guardar
 								</Button>
 								<Button
+									className="btn-update btn btn-danger"
 									size="sm"
 									variant="primary"
 									type="button"
 									onClick={() => {
 										handleUpdate();
 									}}>
-									Update
+									Actualizar
 								</Button>
 							</Form>
 						</Col>
@@ -133,7 +134,7 @@ export const FormCategory = () => {
 										</td>
 										<td>
 											<i
-												className="fas fa-trash-alt size-sm  iconos-tablas"
+												className="fas fa-trash-alt size-sm  iconos-tablas "
 												onClick={() => {
 													actions.eliminateCategory(item);
 												}}
