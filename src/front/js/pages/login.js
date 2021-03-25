@@ -100,7 +100,9 @@ export function Login() {
 									</Button>
 								</Col>
 								<Col sm={{ span: 4, offset: 2 }}>
-									<Button href="" variant="light">
+									<Button
+										variant="light"
+										href="https://3000-pink-crane-guzshfxs.ws-us03.gitpod.io/register">
 										Registrar nuevo Usuario
 									</Button>
 								</Col>
