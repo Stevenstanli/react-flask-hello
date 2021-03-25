@@ -260,7 +260,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			insertProducts: data => {
 				console.log(data);
 				fetch(
-					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product/",
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product",
 
 					{
 						method: "POST",

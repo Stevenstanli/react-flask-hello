@@ -35,7 +35,7 @@ export const AddProduct = () => {
 	const handleUpdate = () => {
 		if (
 			id_Product === "" ||
-			id_provider === "" ||
+			id_Provider === "" ||
 			id_Category === "" ||
 			name_Product === "" ||
 			trade_Product_Details === "" ||
@@ -50,7 +50,7 @@ export const AddProduct = () => {
 		} else {
 			const data = {
 				id_Product: id_Product,
-				id_provider: id_Provider,
+				id_Provider: id_Provider,
 				id_Category: id_Category,
 				name_Product: name_Product,
 				trade_Product_Details: trade_Product_Details,
@@ -60,7 +60,7 @@ export const AddProduct = () => {
 				profit_Product_Details: profit_Product_Details,
 				price_Out_Product_Details: price_Out_Product_Details,
 				discount_Product_Details: discount_Product_Details,
-				active_Product: "activo"
+				active_Product: "Activo"
 			};
 			actions.updateProduct(data);
 
@@ -80,29 +80,6 @@ export const AddProduct = () => {
 
 	const handleSubmit = e => {
 		e.preventDefault();
-		console.log(
-			id_Product +
-				" " +
-				id_Provider +
-				" " +
-				id_Category +
-				" " +
-				name_Product +
-				" " +
-				trade_Product_Details +
-				" " +
-				tax_Product_Details +
-				" " +
-				description_Product_Details +
-				" " +
-				price_In_Product_Details +
-				" " +
-				profit_Product_Details +
-				" " +
-				price_Out_Product_Details +
-				" " +
-				discount_Product_Details
-		);
 		if (
 			id_Product === "" ||
 			id_Provider === "" ||
@@ -120,7 +97,7 @@ export const AddProduct = () => {
 		} else {
 			const data = {
 				id_Product: id_Product,
-				id_provider: id_Provider,
+				id_Provider: id_Provider,
 				id_Category: id_Category,
 				name_Product: name_Product,
 				trade_Product_Details: trade_Product_Details,
@@ -130,7 +107,7 @@ export const AddProduct = () => {
 				profit_Product_Details: profit_Product_Details,
 				price_Out_Product_Details: price_Out_Product_Details,
 				discount_Product_Details: discount_Product_Details,
-				active_Product: "activo"
+				active_Product: "Activo"
 			};
 			actions.insertProducts(data);
 		}
@@ -206,7 +183,6 @@ export const AddProduct = () => {
 											);
 										})}
 								</Form.Control>
-								<h3>{id_Provider}</h3>
 							</Form.Group>
 							{/* <<<<<<<<<<<<<<<<<<<<<<<<<<<<ARREGLAR: asociar con categoría */}
 							<Form.Group as={Col}>
@@ -225,7 +201,6 @@ export const AddProduct = () => {
 											);
 										})}
 								</Form.Control>
-								<h3>{id_Category}</h3>
 							</Form.Group>
 							<Form.Group as={Col}>
 								<Form.Label>Impuesto</Form.Label>
@@ -310,15 +285,27 @@ export const AddProduct = () => {
 								if (item.active_Product == "Activo") {
 									return (
 										<tr key={i}>
-											<td>{i + 1}</td>
-											<td>{store.products[i].id_Product}</td>
-											<td>{store.products[i].name_Product}</td>
-											<td>{item.products[0].price_In_Product_Details}</td>
-											<td>{item.properties[0].tax_Product_Details}</td>
-											<td>{item.products[0].price_Out_Product_Details}</td>
+											<td>
+												<h6>{i + 1}</h6>
+											</td>
+											<td>
+												<h6>{store.products[i].id_Product}</h6>
+											</td>
+											<td>
+												<h6>{store.products[i].name_Product}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].price_In_Product_Details}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].tax_Product_Details}</h6>
+											</td>
+											<td>
+												<h6>{item.properties[0].price_Out_Product_Details}</h6>
+											</td>
 											<td>
 												<i
-													className="fas fa-pen"
+													className="fas fa-pen symbol-fontawesome"
 													onClick={() => {
 														update(item);
 													}}
@@ -326,7 +313,7 @@ export const AddProduct = () => {
 											</td>
 											<td>
 												<i
-													className="fas fa-trash-alt"
+													className="fas fa-trash-alt symbol-fontawesome"
 													onClick={() => {
 														actions.eliminateProduct(item);
 													}}

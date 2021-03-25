@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { Component, useEffect, useContext, useState } from "react";
 import { Context } from "../store/appContext";
 import {
 	Jumbotron,
@@ -14,7 +14,8 @@ import {
 	ButtonGroup,
 	Container,
 	Accordion,
-	ListGroup
+	ListGroup,
+	Fragment
 } from "react-bootstrap";
 import Link from "react-router-dom";
 import { OrderCard } from "./orderCard";
@@ -23,6 +24,11 @@ import "../../styles/productsByProvider.scss";
 
 export const ProductsByProvider = () => {
 	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.loadProducts();
+		actions.loadProviders();
+		actions.loadCategory();
+	}, []);
 	return (
 		<div>
 			{!!store.providers &&
@@ -34,6 +40,9 @@ export const ProductsByProvider = () => {
 								<Accordion.Toggle as={Button} variant="link" eventKey="1">
 									{store.providers[i].name_Provider}
 								</Accordion.Toggle>
+								<Accordion.Collapse eventKey="1">
+									<OrderCard />
+								</Accordion.Collapse>
 							</Card>
 						</Accordion>
 					);

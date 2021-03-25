@@ -5,19 +5,34 @@ import "../../styles/orderCard.scss";
 
 export function OrderCard() {
 	const { store, actions } = useContext(Context);
+	useEffect(() => {
+		actions.loadProducts();
+		actions.loadProviders();
+		actions.loadCategory();
+	}, []);
 	return (
 		<Jumbotron>
 			<Row>
-				{!!store.providers &&
-					store.providers.map((item, index) => {
+				{!!store.products &&
+					store.products.map((item, i) => {
 						return (
-							<Card key={item} className="order-body">
+							<Card key={i} className="order-body">
 								<div className="order-container">
 									{/* Nombre del producto */}
-									<h3 className="product-name">{store.providers[index].name_Provider}</h3>
+									<h3 className="product-name">{store.products[i].name_Product}</h3>
 									{/* Nombre del proveedor */}
-									<h5 className="provider-name">{store.providers[index].name_Provider}</h5>
-									<span className="product-size">9</span>
+									{!!store.providers &&
+										store.providers.map((item, i) => {
+											if (store.products[i].id_Provider == store.providers[i].id_Provider) {
+												return (
+													<h5 key={i} className="provider-name">
+														{store.providers[i].name_Provider}
+													</h5>
+												);
+											}
+										})}
+
+									<span className="product-size">{store.products[i].id_Product}</span>
 									<hr className="line" />
 									<div className="buttons-group">
 										<Button className="check-button" variant="success">
