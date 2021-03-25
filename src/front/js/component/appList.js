@@ -142,7 +142,7 @@ export const AppList = () => {
 					</Col>
 
 					<Col md={12} className="header-content">
-						<button className="btn btn-warning">Y mucho mas</button>
+						<button className="btn-app btn btn-danger">Y mucho mas</button>
 					</Col>
 				</Row>
 			</div>

@@ -11,10 +11,12 @@ import Image from "react-bootstrap/Image";
 import Card from "react-bootstrap/Card";
 import CardDeck from "react-bootstrap/CardDeck";
 import { Histories } from "../component/histories";
+import { HistoriesIz } from "../component/historiesIz";
 import { Header } from "../component/header";
 import { AppList } from "../component/appList";
 import { Team } from "../component/team";
 import { Contact } from "../component/contact";
+import { Maps } from "../component/map";
 
 export const Home = () => {
 	const { store, actions } = useContext(Context);
@@ -35,7 +37,14 @@ export const Home = () => {
 			</Row>
 
 			<Row className="history">
-				<Histories></Histories>
+				<Col md={10}>
+					<Histories></Histories>
+				</Col>
+			</Row>
+			<Row className="history justify-content-end">
+				<Col md={10}>
+					<HistoriesIz></HistoriesIz>
+				</Col>
 			</Row>
 
 			<Row className="cards">
@@ -45,6 +54,9 @@ export const Home = () => {
 			</Row>
 			<Team></Team>
 			<Contact></Contact>
+			<Row className="mapas">
+				<Maps></Maps>
+			</Row>
 		</Fragment>
 	);
 };

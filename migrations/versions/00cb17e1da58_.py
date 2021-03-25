@@ -1,14 +1,8 @@
 """empty message
 
-<<<<<<< HEAD:migrations/versions/3851746570eb_.py
-Revision ID: 3851746570eb
+Revision ID: 00cb17e1da58
 Revises: 
-Create Date: 2021-03-24 19:57:37.615234
-=======
-Revision ID: 8cb804169d4f
-Revises: 
-Create Date: 2021-03-24 20:04:51.410290
->>>>>>> ebf6cad7422452d316fba7d8cbdb31a579a0c3dd:migrations/versions/8cb804169d4f_.py
+Create Date: 2021-03-24 21:31:29.916126
 
 """
 from alembic import op
@@ -16,11 +10,7 @@ import sqlalchemy as sa
 
 
 # revision identifiers, used by Alembic.
-<<<<<<< HEAD:migrations/versions/3851746570eb_.py
-revision = '3851746570eb'
-=======
-revision = '8cb804169d4f'
->>>>>>> ebf6cad7422452d316fba7d8cbdb31a579a0c3dd:migrations/versions/8cb804169d4f_.py
+revision = '00cb17e1da58'
 down_revision = None
 branch_labels = None
 depends_on = None
@@ -44,9 +34,8 @@ def upgrade():
     op.create_table('user',
     sa.Column('id_Document_User', sa.String(length=25), nullable=False),
     sa.Column('name_User', sa.String(length=120), nullable=False),
-    sa.Column('active_User', sa.Boolean(), nullable=False),
-    sa.PrimaryKeyConstraint('id_Document_User'),
-    sa.UniqueConstraint('name_User')
+    sa.Column('active_User', sa.String(length=80), nullable=False),
+    sa.PrimaryKeyConstraint('id_Document_User')
     )
     op.create_table('product',
     sa.Column('id_Product', sa.String(length=25), nullable=False),

@@ -1,7 +1,10 @@
 import React, { useContext, Fragment } from "react";
 import "../../styles/home.scss";
 import { Context } from "../store/appContext";
-import team from "../../img/annie-spratt-sggw4-qDD54-unsplash.jpg";
+import team1 from "../../img/Screenshot_24.png";
+import team2 from "../../img/Screenshot_25.png";
+import team3 from "../../img/Screenshot_26.png";
+import team4 from "../../img/Screenshot_27.png";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import Image from "react-bootstrap/Image";
@@ -15,10 +18,10 @@ export const Team = () => {
 				<div className="container">
 					<div className="grid">
 						<figure className="effect-dexter" sm={12}>
-							<img src={team} alt="Gaming Tournament" />
+							<img src={team1} alt="" />
 							<figcaption>
 								<h4>
-									Bruce <span> Wayne</span>
+									Steven <span> Espinoza</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -34,10 +37,10 @@ export const Team = () => {
 							</figcaption>
 						</figure>
 						<figure className="effect-dexter">
-							<img src={team} alt="Gaming Tournament" />
+							<img src={team2} alt="" />
 							<figcaption>
 								<h4>
-									Clark <span> Kent</span>
+									Sergio <span> Picado</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -53,10 +56,10 @@ export const Team = () => {
 							</figcaption>
 						</figure>
 						<figure className="effect-dexter">
-							<img src={team} alt="Gaming Tournament" />
+							<img src={team3} alt="" />
 							<figcaption>
 								<h4>
-									Diana <span> Prince</span>
+									Gerald <span> Aguilar</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -72,10 +75,10 @@ export const Team = () => {
 							</figcaption>
 						</figure>
 						<figure className="effect-dexter">
-							<img src={team} alt="Gaming Tournament" />
+							<img src={team4} alt="" />
 							<figcaption>
 								<h4>
-									Lex <span> Luthor</span>
+									Kevin <span> Meza</span>
 								</h4>
 								<ul className="social">
 									<li>
