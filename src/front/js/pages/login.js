@@ -95,10 +95,17 @@ export function Login() {
 
 							<Row>
 								<Col sm={{ span: 5, offset: 1 }}>
-									<Button variant="light">Volver</Button>
+									<Button href="/" variant="light">
+										Volver
+									</Button>
 								</Col>
 								<Col sm={{ span: 4, offset: 2 }}>
-									<Button variant="light">Registrar nuevo Usuario</Button>
+									{/*modificar esta parte segun su direccion*/}
+									<Button
+										variant="light"
+										href="https://3000-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/register">
+										Registrar nuevo Usuario
+									</Button>
 								</Col>
 							</Row>
 						</Card.Body>

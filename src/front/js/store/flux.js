@@ -352,7 +352,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			eliminateProduct: data => {
 				console.log(data);
 				fetch(
-					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io//api/productEliminate/" + data.id_Product,
+					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/productEliminate/" + data.id_Product,
 
 					{
 						method: "PUT",
