@@ -173,7 +173,7 @@ export const FormProvider = () => {
 								</Form.Group>
 
 								<Button size="sm" variant="primary" type="submit">
-									Submit
+									Guardar
 								</Button>
 								<Button
 									className="btn-update btn btn-danger"
@@ -183,7 +183,7 @@ export const FormProvider = () => {
 									onClick={() => {
 										handleUpdate();
 									}}>
-									Update
+									Actualizar
 								</Button>
 							</Form>
 						</Col>
