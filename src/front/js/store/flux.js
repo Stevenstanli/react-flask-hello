@@ -205,10 +205,55 @@ const getState = ({ getStore, getActions, setStore }) => {
 			},
 
 			//--------------------------------------------Users---------------------------------------------------------------
-			insertUserdata: data => {
+			// insertUserdata: data => {
+			// 	console.log(data);
+			// 	fetch(
+			// 		"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user",
+
+			// 		{
+			// 			method: "POST",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 			body: JSON.stringify(data)
+			// 		}
+			// 	)
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log("Success:", data);
+			// 			setStore({ providers: data });
+			// 			setRedirect(true);
+			// 		})
+			// 		.catch(error => {
+			// 			console.error("Error:", error);
+			// 		});
+			// },
+			// insertLogindata: data => {
+			// 	console.log(data);
+			// 	fetch(
+			// 		"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login",
+
+			// 		{
+			// 			method: "POST",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 			body: JSON.stringify(data)
+			// 		}
+			// 	)
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log("Success:", data);
+			// 			setStore({ providers: data });
+			// 		})
+			// 		.catch(error => {
+			// 			console.error("Error:", error);
+			// 		});
+			// },
+			insertChangepassdata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/user",
+					"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/changePass",
 
 					{
 						method: "POST",
@@ -227,10 +272,10 @@ const getState = ({ getStore, getActions, setStore }) => {
 						console.error("Error:", error);
 					});
 			},
-			insertLogindata: data => {
+			insertNewpassdata: data => {
 				console.log(data);
 				fetch(
-					"https://3001-teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/login",
+					" ",
 
 					{
 						method: "POST",

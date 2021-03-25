@@ -2,6 +2,7 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "../../styles/register.scss";
+import { Redirect } from "react-router-dom";
 
 export function Register() {
 	const { store, actions } = useContext(Context);
@@ -12,6 +13,7 @@ export function Register() {
 	const [cargo_User_Details, setCargo_User_Details] = useState("");
 	const [phone_User_Details, setPhone_User_Details] = useState("");
 	const [address_Details, setaddress_Details] = useState("");
+	const [redirect, setRedirect] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -36,7 +38,21 @@ export function Register() {
 				address_Details: address_Details,
 				active_User: true
 			};
-			actions.insertUserdata(data);
+			fetch("https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log("Success:", data);
+					setRedirect(true);
+				})
+				.catch(error => {
+					console.error("Error:", error);
+				});
 		}
 	};
 
@@ -131,6 +147,7 @@ export function Register() {
 											</Col>
 										</Form.Group>
 									</Form>
+									{redirect ? <Redirect to="/login" /> : ""}
 								</Col>
 							</Row>
 							<Row>
