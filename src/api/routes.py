@@ -190,6 +190,38 @@ def add_user():
     db.session.commit()
     return jsonify("All good"), 200 
 
+
+@api.route('/user/<string:id_Document_User>', methods=['PUT'])
+def update_user(id_Document_User):
+
+
+    userUpdate = User.query.get(id_Document_User)
+    
+    
+    print("Hola")
+    if userUpdate  is None:
+        raise APIException('User not found', status_code=404)
+    
+
+    request_body = request.get_json()
+
+    if "name_User" in request_body:
+        userUpdate.name_User = request_body["name_User"]
+    if  "email_User_Details" in request_body:
+        userUpdate.user.email_User_Details = request_body ["email_User_Details"]
+    if  "password_User_Details" in request_body:
+        userUpdate.user.password_User_Details = request_body ["password_User_Details"]
+    if  "cargo_User_Details" in request_body:
+        userUpdate.user.cargo_User_Details = request_body ["cargo_User_Details"]
+    if  "phone_User_Details" in request_body:
+       userUpdate.user.phone_User_Details = request_body ["phone_User_Details"]
+    if  "address_Details" in request_body:
+       userUpdate.user.address_Details = request_body ["address_Details"]   
+     
+    db.session.commit()
+
+    return jsonify("All good"), 200    
+#-------------------------------------------------login-----------------------------------------------------------------------------
 @api.route('/login',methods=['POST'])
 def login():
 
@@ -223,6 +255,28 @@ def login():
         }                                
 
     return jsonify(data), 200 
+#---------------------------------------------password------------------------------------------------------------------------------------
+
+# @api.route('/changePass/<string:id_Document_User>', methods=['PUT'])
+# def update_pass(id_Document_User):
+
+#     # recibir info del request
+    
+#     userId = User.query.get(id_Document_User)
+
+#     if userId  is None:
+#         raise APIException('Pass not found', status_code=404)
+        
+#     request_body = request.get_json()
+
+#     if "password_User_Details" in request_body:
+#         userId.user.password_User_Details = request_body ["password_User_Details"]
+    
+#     db.session.commit()
+
+#     return jsonify("All good"), 200  
+
+
 
 #----------------------------------------Product------------------------------------------------------------------------------------------
 @api.route('/product',methods=['GET'])
@@ -279,6 +333,7 @@ def add_inventory():
     provider = Provider.query.all()
     provider_serialized = list(map(lambda data: data.serialize(), provider))
     return jsonify(provider_serialized),200
+
 
 #--------------------------Movement_Inventory----------------------------------------------------------------------------------------------------
 
