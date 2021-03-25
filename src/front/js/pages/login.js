@@ -2,11 +2,13 @@ import React, { useState, useEffect, useContext } from "react";
 import { Context } from "../store/appContext";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "../../styles/register.scss";
+import { Redirect } from "react-router-dom";
 
 export function Login() {
 	const { store, actions } = useContext(Context);
 	const [name_User, setName_User] = useState("");
 	const [password_User_Details, setPassword_User_Details] = useState("");
+	const [redirect, setRedirect] = useState(false);
 
 	const handleSubmit = e => {
 		e.preventDefault();
@@ -18,7 +20,23 @@ export function Login() {
 				password_User_Details: password_User_Details,
 				active_User: true
 			};
-			actions.insertLogindata(data);
+
+			fetch("https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login", {
+				method: "POST",
+				headers: {
+					"Content-Type": "application/json"
+				},
+				body: JSON.stringify(data)
+			})
+				.then(response => response.json())
+				.then(data => {
+					console.log("Success:", data);
+					sessionStorage.setItem("u_token", data.token);
+					setRedirect(true);
+				})
+				.catch(error => {
+					console.error("Error:", error);
+				});
 		}
 	};
 
@@ -71,6 +89,7 @@ export function Login() {
 											</Col>
 										</Form.Group>
 									</Form>
+									{redirect ? <Redirect to="/reports" /> : ""}
 								</Col>
 							</Row>
 

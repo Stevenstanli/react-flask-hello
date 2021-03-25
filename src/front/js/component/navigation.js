@@ -11,7 +11,7 @@ export const Navigation = () => {
 				<i className=" style fas fa-dolly-flatbed" />
 				<div className="brand-ri">
 					<div href="">Bazzar</div>
-					<span>Unleash your growth potential</span>
+					<span>Libera tu potencial de crecimiento</span>
 				</div>
 			</Navbar.Brand>
 			<Navbar.Toggle aria-controls="responsive-navbar-nav" />

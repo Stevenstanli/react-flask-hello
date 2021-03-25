@@ -1,8 +1,25 @@
-import React from "react";
+import React, { useState, useEffect, useContext } from "react";
+import { Context } from "../store/appContext";
 import { Form, Button, Row, Col, Card } from "react-bootstrap";
 import "../../styles/register.scss";
 
 export function Newpass() {
+	const { store, actions } = useContext(Context);
+	const [password_User_Details, setPassword_User_Details] = useState("");
+
+	const handleSubmit = e => {
+		e.preventDefault();
+		if (password_User_Details === "") {
+			alert("Existen campos vacios");
+		} else {
+			const data = {
+				password_User_Details: password_User_Details,
+				active_User: true
+			};
+			actions.insertNewpassdata(data);
+		}
+	};
+
 	return (
 		<>
 			<Row className="vh-100 align-items-center">
@@ -15,7 +32,7 @@ export function Newpass() {
 							</Card.Title>
 							<Row>
 								<Col md={{ span: 6, offset: 3 }}>
-									<Form>
+									<Form onSubmit={e => handleSubmit(e)}>
 										<Form.Group as={Row} controlId="formHorizontalText">
 											<Col sm={12}>
 												<Form.Control type="text" placeholder="Nueva Contraseña" />
@@ -24,7 +41,11 @@ export function Newpass() {
 
 										<Form.Group as={Row} controlId="formHorizontalPassword">
 											<Col sm={12}>
-												<Form.Control type="password" placeholder="Repetir Contraseña" />
+												<Form.Control
+													type="password"
+													placeholder="Repetir Contraseña"
+													onChange={e => setPassword_User_Details(e.target.value)}
+												/>
 											</Col>
 										</Form.Group>
 

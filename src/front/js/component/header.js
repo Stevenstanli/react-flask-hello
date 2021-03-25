@@ -11,16 +11,14 @@ export const Header = () => {
 		<Jumbotron fluid>
 			<Container className="header-jumbo">
 				<div className="shawdow-ban">
-					<span />
-					<h1 className="">Se venden costuras a domicilio</h1>
-					<p>
-						Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut
-						labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco
-						laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in
-						voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat
-						non proident, sunt in culpa qui officia deserunt mollit anim id est laborum
+					<span></span>
+					<h1 className=""></h1>
+					<p className="text-banner">
+						Nuestra familia de aplicaciones funciona a la perfección, lo que te permite automatizar y
+						rastrear todo lo que haces: centralizado, en línea y accesible desde cualquier lugar con
+						cualquier dispositivo.
 					</p>
-					<button className="btn btn-danger">PRODUCTOS</button>
+					<button className=" btn-header btn btn-danger">Ver más</button>
 				</div>
 			</Container>
 		</Jumbotron>

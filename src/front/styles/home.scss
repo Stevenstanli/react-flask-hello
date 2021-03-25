@@ -3,32 +3,82 @@
     padding: 0;
 }
 .history{
-    margin-top: 60px;;
+    margin-top: 60px;
+    
 }
-
+.text-f-history{
+    font-size: 45px;
+    margin-bottom: 20px;
+}
 .header-jumbo{
     text-align: center;
     margin-top: 150px;
 }
-
+.btn-header{
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif  !important;
+    font-size: 25px;
+    margin-top: 18px;
+    padding: 12px 18px 12px 18px;
+}
+.btn-app {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif  !important;
+    font-size: 25px !important;
+    margin-top: 18px;
+    padding: 12px 18px 12px 18px
+}
 .header-content{
+    margin-top: 33px;
     text-align: center;
     padding: 20px;
+    margin-bottom: 20px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif  !important;
 }
 
 .Image{
     padding: 10px;
 }
-.apps title{
-    margin-top: -32px;
+.title{
+    margin-top: -32px !important;
 }
-.apps, .wrapper{
+.apps, .contacts-9{
     background-color: rgba(134, 70, 70, 0.5);
 }
 .team {
+    
 	padding: 50px 0;
 }
+.cards{
+    margin-top: 62px;
+}
+.mapas-interno{
+padding-right: 0px;
+padding-left: 0px;
+}
 
+.text-banner{
+    font-size: 30px;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif  !important;
+
+}
+.text-history{
+    font-size: 25px;
+    margin-left: 10px;
+}
+.lista-history{
+    font-size: 100% !important;
+}
+.border-bottom{
+    border-bottom: 15px solid rgba(134, 70, 70, 0.5) !important;
+}
+.border-top{
+    border-top: 15px solid rgba(67, 119, 121, 0.5) !important;
+}
+.info-crm{
+    margin-top: 55px;
+    background-color: rgba(175, 167, 167, 0.5);;
+    padding-bottom: 55px;
+    padding-top: 55px;
+}
 .grid {
 	position: relative;
 	margin: 0 auto;
@@ -536,7 +586,7 @@ h3.global-title {
   .cont-details p a {
     font-style: normal;
     font-weight: normal;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 24px;
     color: #777777;
     margin-top: 3px;

@@ -12,7 +12,7 @@ export const Contact = () => {
 		<section className="w3l-contact-1">
 			<div className="contacts-9 section-gap">
 				<div className="wrapper">
-					<h3 className="global-title text-center">Contact us</h3>
+					<h3 className="global-title text-center">Contactenos</h3>
 					<div className="d-grid contact-view">
 						<div className="cont-details">
 							<div className="cont-top">
@@ -20,9 +20,9 @@ export const Contact = () => {
 									<span className="fa fa-phone text-primary" />
 								</div>
 								<div className="cont-right">
-									<h6>Call Us</h6>
+									<h3>Llamenos</h3>
 									<p>
-										<a href="tel:+44 99 555 42">+123 45 67 89</a>
+										<a href="">+506 26 6378 4212</a>
 									</p>
 								</div>
 							</div>
@@ -31,7 +31,7 @@ export const Contact = () => {
 									<span className="fa fa-envelope-o text-primary" />
 								</div>
 								<div className="cont-right">
-									<h6>Email Us</h6>
+									<h3>Correo Electronico</h3>
 									<p>
 										<a href="mailto:example@mail.com" className="mail">
 											example@mail.com
@@ -44,8 +44,8 @@ export const Contact = () => {
 									<span className="fa fa-map-marker text-primary" />
 								</div>
 								<div className="cont-right">
-									<h6>Address</h6>
-									<p>Address here, 208 Trainer Avenue street, Illinois, UK - 62617.</p>
+									<h3>Direccion</h3>
+									<p>San Jose, Costa Rica</p>
 								</div>
 							</div>
 						</div>
@@ -57,7 +57,7 @@ export const Contact = () => {
 										className="form-control"
 										name="w3lName"
 										id="w3lName"
-										placeholder="Name"
+										placeholder="Nombre"
 										required=""
 									/>
 									<input
@@ -75,7 +75,7 @@ export const Contact = () => {
 										className="form-control"
 										name="w3lSubject"
 										id="w3lSubject"
-										placeholder="Subject"
+										placeholder="Asunto"
 										required=""
 									/>
 								</div>
@@ -83,11 +83,10 @@ export const Contact = () => {
 									name="w3lMessage"
 									className="form-control"
 									id="w3lMessage"
-									placeholder="Message"
-									required=""
-								/>
+									placeholder="Escribanos"
+									required=""></textarea>
 								<button type="submit" className="btn btn-contact">
-									Send Message
+									Enviar
 								</button>
 							</form>
 						</div>
