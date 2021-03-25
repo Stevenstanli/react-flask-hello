@@ -7,10 +7,10 @@ import NavDropdown from "react-bootstrap/NavDropdown";
 export const Navigation = () => {
 	return (
 		<Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-			<Navbar.Brand href="home">
+			<Navbar.Brand href="/">
 				<i className=" style fas fa-dolly-flatbed" />
 				<div className="brand-ri">
-					<div href="home">Bazzar</div>
+					<div href="/">Bazzar</div>
 					<span>Libera tu potencial de crecimiento</span>
 				</div>
 			</Navbar.Brand>
