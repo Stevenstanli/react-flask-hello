@@ -125,7 +125,7 @@ export const FormCategory = () => {
 										<td>{store.category[i].description_Category}</td>
 										<td>
 											<i
-												className="fas fa-pen size-sm"
+												className="fas fa-pen size-sm  iconos-tablas"
 												onClick={() => {
 													update(item);
 												}}
@@ -133,7 +133,7 @@ export const FormCategory = () => {
 										</td>
 										<td>
 											<i
-												className="fas fa-trash-alt size-sm"
+												className="fas fa-trash-alt size-sm  iconos-tablas"
 												onClick={() => {
 													actions.eliminateCategory(item);
 												}}
