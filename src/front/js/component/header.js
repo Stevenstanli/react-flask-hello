@@ -11,8 +11,8 @@ export const Header = () => {
 		<Jumbotron fluid>
 			<Container className="header-jumbo">
 				<div className="shawdow-ban">
-					<span></span>
-					<h1 className=""></h1>
+					<span />
+					<h1 className="" />
 					<p className="text-banner">
 						Nuestra familia de aplicaciones funciona a la perfección, lo que te permite automatizar y
 						rastrear todo lo que haces: centralizado, en línea y accesible desde cualquier lugar con

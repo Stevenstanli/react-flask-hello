@@ -24,6 +24,14 @@ export const FormProvider = () => {
 		setPhone_Provider_Details(data.properties[0].phone_Provider_Details);
 		setAddress_Provider_Details(data.properties[0].address_Provider_Details);
 	};
+	const limpiar = () => {
+		setId_Provider("");
+		setName_Provider("");
+		setEmail_Provider_Details("");
+		setPayment_Type_Provider_Details("");
+		setPhone_Provider_Details("");
+		setAddress_Provider_Details("");
+	};
 
 	const handleUpdate = () => {
 		if (
@@ -47,12 +55,7 @@ export const FormProvider = () => {
 			};
 			actions.updateProvider(data);
 
-			setId_Provider("");
-			setName_Provider("");
-			setEmail_Provider_Details("");
-			setPayment_Type_Provider_Details("");
-			setPhone_Provider_Details("");
-			setAddress_Provider_Details("");
+			limpiar();
 		}
 	};
 
@@ -78,6 +81,7 @@ export const FormProvider = () => {
 				active_Provider: "Activo"
 			};
 			actions.insertData(data);
+			limpiar();
 		}
 	};
 
@@ -169,16 +173,17 @@ export const FormProvider = () => {
 								</Form.Group>
 
 								<Button size="sm" variant="primary" type="submit">
-									Submit
+									Guardar
 								</Button>
 								<Button
+									className="btn-update btn btn-danger"
 									size="sm"
 									variant="primary"
 									type="button"
 									onClick={() => {
 										handleUpdate();
 									}}>
-									Update
+									Actualizar
 								</Button>
 							</Form>
 						</Col>
@@ -212,7 +217,7 @@ export const FormProvider = () => {
 											<td>{item.properties[0].phone_Provider_Details}</td>
 											<td>
 												<i
-													className="fas fa-pen"
+													className="fas fa-pen iconos-tablas"
 													onClick={() => {
 														update(item);
 													}}
@@ -220,7 +225,7 @@ export const FormProvider = () => {
 											</td>
 											<td>
 												<i
-													className="fas fa-trash-alt"
+													className="fas fa-trash-alt iconos-tablas"
 													onClick={() => {
 														actions.eliminateCategory(item);
 													}}

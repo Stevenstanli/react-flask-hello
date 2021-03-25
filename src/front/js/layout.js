@@ -49,12 +49,6 @@ const Layout = () => {
 						<Route exact path="/newpass">
 							<Newpass />
 						</Route>
-						<Route exact path="/demo">
-							<Demo />
-						</Route>
-						<Route exact path="/single/:theid">
-							<Single />
-						</Route>
 						<Route exact path="/category">
 							<Category />
 						</Route>

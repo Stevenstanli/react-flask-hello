@@ -21,7 +21,7 @@ export const Team = () => {
 							<img src={team1} alt="" />
 							<figcaption>
 								<h4>
-									Steven <span> Espinoza</span>
+									Steven Espinoza <span> Scrum Master</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -40,7 +40,7 @@ export const Team = () => {
 							<img src={team2} alt="" />
 							<figcaption>
 								<h4>
-									Sergio <span> Picado</span>
+									Sergio Picado <span> Product Owner</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -59,7 +59,7 @@ export const Team = () => {
 							<img src={team3} alt="" />
 							<figcaption>
 								<h4>
-									Gerald <span> Aguilar</span>
+									Gerald Aguilar <span> Developer</span>
 								</h4>
 								<ul className="social">
 									<li>
@@ -78,7 +78,7 @@ export const Team = () => {
 							<img src={team4} alt="" />
 							<figcaption>
 								<h4>
-									Kevin <span> Meza</span>
+									Kevin Meza <span> Developer</span>
 								</h4>
 								<ul className="social">
 									<li>

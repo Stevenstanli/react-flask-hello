@@ -21,11 +21,11 @@ export const Histories = () => {
 							<span className="text-muted"> en tiempo real</span>
 						</h4>
 						<p>
-							<i className="fas fa-burn lista-history"></i> Tome decisiones empresariales más inteligentes
+							<i className="fas fa-burn lista-history" /> Tome decisiones empresariales más inteligentes
 							con un análisis potente en tiempo real.
 						</p>
 						<p>
-							<i className="fas fa-burn lista-history"></i> Mida y gestione el rendimiento de ventas de su
+							<i className="fas fa-burn lista-history" /> Mida y gestione el rendimiento de ventas de su
 							organización en todo el territorio.
 						</p>
 					</div>

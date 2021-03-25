@@ -95,7 +95,9 @@ export function Login() {
 
 							<Row>
 								<Col sm={{ span: 5, offset: 1 }}>
-									<Button variant="light">Volver</Button>
+									<Button href="/" variant="light">
+										Volver
+									</Button>
 								</Col>
 								<Col sm={{ span: 4, offset: 2 }}>
 									<Button
