@@ -16,11 +16,11 @@ export const HistoriesIz = () => {
 							<span className="text-muted"> los números</span>
 						</h4>
 						<p>
-							<i className="fas fa-burn lista-history"></i> Realice un seguimiento de los indicadores
-							clave de rendimiento (KPI), incluidos los pronósticos futuros y las tendencias actuales.
+							<i className="fas fa-burn lista-history" /> Realice un seguimiento de los indicadores clave
+							de rendimiento (KPI), incluidos los pronósticos futuros y las tendencias actuales.
 						</p>
 						<p>
-							<i className="fas fa-burn lista-history"></i> Mida la eficacia de la comunicación con sus
+							<i className="fas fa-burn lista-history" /> Mida la eficacia de la comunicación con sus
 							clientes y encuentre el momento y el canal perfectos para comunicarse con ellos.
 						</p>
 					</div>

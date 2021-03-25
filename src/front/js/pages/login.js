@@ -95,7 +95,9 @@ export function Login() {
 
 							<Row>
 								<Col sm={{ span: 5, offset: 1 }}>
-									<Button variant="light">Volver</Button>
+									<Button variant="light" href="javascript:history.go(-1)">
+										Volver
+									</Button>
 								</Col>
 								<Col sm={{ span: 4, offset: 2 }}>
 									<Button
