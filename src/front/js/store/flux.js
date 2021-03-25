@@ -208,7 +208,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// insertUserdata: data => {
 			// 	console.log(data);
 			// 	fetch(
-			// 		"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user",
+			// 		"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
 
 			// 		{
 			// 			method: "POST",
@@ -231,7 +231,7 @@ const getState = ({ getStore, getActions, setStore }) => {
 			// insertLogindata: data => {
 			// 	console.log(data);
 			// 	fetch(
-			// 		"https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/login",
+			// 		"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/login",
 
 			// 		{
 			// 			method: "POST",

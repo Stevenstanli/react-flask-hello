@@ -38,7 +38,7 @@ export function Register() {
 				address_Details: address_Details,
 				active_User: true
 			};
-			fetch("https://3001-pink-crane-guzshfxs.ws-us03.gitpod.io/api/user", {
+			fetch("https://teal-tortoise-5hgr6djn.ws-us03.gitpod.io/api/user", {
 				method: "POST",
 				headers: {
 					"Content-Type": "application/json"
