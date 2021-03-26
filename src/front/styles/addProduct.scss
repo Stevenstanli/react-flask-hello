@@ -1,0 +1,48 @@
+.general-row{ 
+    display: flex;
+    justify-content: space-around;
+}
+.add-product-form { border:solid 10px white;
+    display: flex;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 10px;
+    align-items: center;
+}
+.add-product-symbol{ 
+    display: flex;
+    width: fit-content;
+    margin-top: 10px;
+    font-size: 500% !important;
+}
+.dropdown-provider{ 
+    background-color: white;
+    display: flex;
+    min-width: 150px;
+}
+.dropdown-category{ 
+    background-color: white;
+    display: flex;
+    width: 150px;
+}
+.dropdown-tax{ 
+    background-color: white;
+    display: flex;
+    width: 150px;
+}
+.set-name{
+    display: flex;
+    width: 470px;
+}
+.guardar-button{
+    display: flex;
+    min-width: 230px;
+}
+.actualizar-button{
+    display: flex;
+    min-width: 230px;
+}
+.symbol-fontawesome{
+    font-size: 150%;
+}
+

@@ -13,7 +13,12 @@ const getState = ({ getStore, getActions, setStore }) => {
 					background: "white",
 					initial: "white"
 				}
-			]
+			],
+
+			providers: null,
+			datosUpdate: null,
+			category: null,
+			products: null
 		},
 		actions: {
 			// Use getActions to call a function within a fuction
@@ -41,6 +46,342 @@ const getState = ({ getStore, getActions, setStore }) => {
 
 				//reset the global store
 				setStore({ demo: demo });
+			},
+
+			//-----------------------------------Category------------------------------------------------------------------------
+
+			loadCategory: () => {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category")
+					.then(response => response.json())
+					.then(response => setStore({ category: response }));
+			},
+			insertCategory: data => {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/category", {
+					method: "POST",
+					headers: {
+						"Content-Type": "application/json"
+					},
+					body: JSON.stringify(data)
+				})
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ category: getStore().category, data });
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			updateCategory: data => {
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/categoryUpdate/" + data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateCategory: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/categoryEliminate/" +
+						data.id_Category,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadCategory();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			//-----------------------------------Provider------------------------------------------------------------------------
+			insertData: data => {
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ providers: getStore().providers, data });
+					})
+					.then(() => {
+						getActions().loadProviders();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			loadProviders: () => {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/provider")
+					.then(response => response.json())
+					.then(response => setStore({ providers: response }));
+			},
+
+			updateProvider: data => {
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerUpdate/" + data.id_Provider,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProviders();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateProvider: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/providerEliminate/" +
+						data.id_Provider,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProviders();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			//--------------------------------------------Users---------------------------------------------------------------
+			// insertUserdata: data => {
+			// 	console.log(data);
+			// 	fetch(
+			// 		"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/user",
+
+			// 		{
+			// 			method: "POST",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 			body: JSON.stringify(data)
+			// 		}
+			// 	)
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log("Success:", data);
+			// 			setStore({ providers: data });
+			// 			setRedirect(true);
+			// 		})
+			// 		.catch(error => {
+			// 			console.error("Error:", error);
+			// 		});
+			// },
+			// insertLogindata: data => {
+			// 	console.log(data);
+			// 	fetch(
+			// 		"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/login",
+
+			// 		{
+			// 			method: "POST",
+			// 			headers: {
+			// 				"Content-Type": "application/json"
+			// 			},
+			// 			body: JSON.stringify(data)
+			// 		}
+			// 	)
+			// 		.then(response => response.json())
+			// 		.then(data => {
+			// 			console.log("Success:", data);
+			// 			setStore({ providers: data });
+			// 		})
+			// 		.catch(error => {
+			// 			console.error("Error:", error);
+			// 		});
+			// },
+			insertChangepassdata: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/changePass",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ providers: data });
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			insertNewpassdata: data => {
+				console.log(data);
+				fetch(
+					" ",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ providers: data });
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			// ---------------------------------Products-----------------------------------------------------------------------------
+			loadProducts: () => {
+				fetch("https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product")
+					.then(response => response.json())
+					.then(response => setStore({ products: response }));
+			},
+			insertProducts: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/product",
+
+					{
+						method: "POST",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+						setStore({ products: getStore().products, data });
+					})
+					.then(() => {
+						getActions().loadProducts();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+			updateProduct: data => {
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productUpdate/" + data.id_Product,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProducts();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			eliminateProduct: data => {
+				console.log(data);
+				fetch(
+					"https://3001-scarlet-bandicoot-4bozzmn7.ws-us03.gitpod.io/api/productEliminate/" + data.id_Product,
+
+					{
+						method: "PUT",
+						headers: {
+							"Content-Type": "application/json"
+						},
+						body: JSON.stringify(data)
+					}
+				)
+					.then(response => response.json())
+					.then(data => {
+						console.log("Success:", data);
+					})
+					.then(() => {
+						getActions().loadProducts();
+					})
+					.catch(error => {
+						console.error("Error:", error);
+					});
+			},
+
+			//Sección de funciones para página de reportes
+			// Filtra productos por proveedor para reporte
+			filterByProvider: provider_id => {
+				const filterProducts = getStore().products.filter(item => {
+					return item.id_Provider === provider_id;
+				});
 			}
 		}
 	};
