@@ -152,7 +152,7 @@ export function Register() {
 							</Row>
 							<Row>
 								<Col sm={{ span: 11, offset: 1 }}>
-									<Button variant="light" type="submit" onclick="history.back(-1)">
+									<Button variant="light" type="submit" href="javascript:history.go(-1)">
 										Volver
 									</Button>
 								</Col>
